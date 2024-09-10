@@ -1,0 +1,21 @@
+set number relativenumber
+set numberwidth=5
+set cursorline
+set shiftwidth=2
+set expandtab
+
+"highlight Normal ctermbg=none guibg=none
+hi SpellBad   guisp=red    gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl
+hi SpellCap   guisp=yellow gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl
+hi SpellRare  guisp=blue   gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl
+hi SpellLocal guisp=orange gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl
+
+" vim specific items
+if !has('nvim')
+endif
+
+" neovim specific items
+if has('nvim')
+    colorscheme tokyonight
+endif
+
