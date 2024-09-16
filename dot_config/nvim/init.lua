@@ -58,7 +58,7 @@ require("lazy").setup(plugins, opts)
 -- LSP Setup
 require("mason").setup()
 
-require'lspconfig'.tsserver.setup{}
+require'lspconfig'.ts_ls.setup{}
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.pyright.setup{}
 
