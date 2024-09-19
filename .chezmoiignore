@@ -1,2 +1,10 @@
 README.md
 LICENSE
+
+{{ if ne .chezmoi.os "darwin" }}
+# Ignore Mac OS files if not Mac OS
+{{ end }}
+
+{{ if ne .chezmoi.os "linux" }}
+# Ignore Linux files if not Linux
+{{ end }} 
