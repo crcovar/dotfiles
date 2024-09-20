@@ -1,5 +1,6 @@
 README.md
 LICENSE
+.gitignore
 
 {{ if ne .chezmoi.os "darwin" }}
 # Ignore Mac OS files if not Mac OS
@@ -7,4 +8,4 @@ LICENSE
 
 {{ if ne .chezmoi.os "linux" }}
 # Ignore Linux files if not Linux
-{{ end }} 
+{{ end }}
