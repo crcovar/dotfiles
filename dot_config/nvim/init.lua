@@ -14,6 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   { "mattn/emmet-vim" },
+  { "hrsh7th/nvim-cmp" },
+  { "hrsh7th/cmp-nvim-lsp" },
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { 'nvim-tree/nvim-web-devicons', opt = true }
@@ -22,13 +24,45 @@ local plugins = {
   { "lewis6991/gitsigns.nvim" },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   { "sbdchd/neoformat" },
-  { "neovim/nvim-lspconfig" },
+  { "neovim/nvim-lspconfig", lazy = false, dependencies = { "hrsh7th/cmp-nvim-lsp" } },
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    config = function ()
+      local configs = require("nvim-treesitter.configs")
+      configs.setup({
+        ensure_installed = {
+          "astro",
+          "c",
+          "cpp",
+          "css",
+          "csv",
+          "lua",
+          "vim",
+          "vimdoc",
+          "query",
+          "elixir",
+          "go",
+          "html",
+          "javascript",
+          "json",
+          "regex",
+          "sql",
+          "tsv",
+          "tsx",
+          "typescript",
+      },
+        sync_install = false,
+        highlight = { enable = true },
+        indent = { enable = true },
+      })
+    end
   },
   { "nvim-treesitter/nvim-treesitter-textobjects" },
   { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim", dependencies = { "hrsh7th/cmp-nvim-lsp" } },
+  { "mfussenegger/nvim-dap" },
+  { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"}},
   { "chrisgrieser/nvim-spider", lazy = true },
   {
     "kylechui/nvim-surround",
@@ -45,6 +79,10 @@ local plugins = {
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
+  { "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    lazy = true
+  },
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -53,14 +91,33 @@ local plugins = {
   }
 }
 
+local opts = {}
+
 require("lazy").setup(plugins, opts)
 
+local lsp_servers = {
+    "astro",
+    "cssls",
+    "elixirls",
+    "gopls",
+    "html",
+    "htmx",
+    "pylsp",
+    "lua_ls",
+    "ts_ls",
+},
 -- LSP Setup
 require("mason").setup()
+require("mason-lspconfig").setup {
+  automatic_installation = true,
+  ensure_installed = lsp_servers
+}
 
-require'lspconfig'.ts_ls.setup{}
-require'lspconfig'.gopls.setup{}
-require'lspconfig'.pyright.setup{}
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+for _, lsp in pairs(lsp_servers) do
+  require("lspconfig")[lsp].setup { capabilities = capabilities }
+end
 
 -- Colorscheme
 --vim.cmd [[colorscheme tokyonight-night]]
