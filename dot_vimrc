@@ -3,6 +3,7 @@ set numberwidth=5
 set cursorline
 set shiftwidth=2
 set expandtab
+set colorcolumn=72
 
 "highlight Normal ctermbg=none guibg=none
 hi SpellBad   guisp=red    gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl
