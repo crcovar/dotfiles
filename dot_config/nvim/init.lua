@@ -79,6 +79,26 @@ local plugins = {
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        { path = "luvit-meta/library", words = { "vim%.uv" } }
+      }
+    }
+  },
+  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+  { -- optional completion source for require statements and module annotations
+    "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+      opts.sources = opts.sources or {}
+      table.insert(opts.sources, {
+        name = "lazydev",
+        group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+      })
+    end,
+  },
   { "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     lazy = true
@@ -94,6 +114,8 @@ local plugins = {
 local opts = {}
 
 require("lazy").setup(plugins, opts)
+
+require('gitsigns').setup()
 
 local lsp_servers = {
     "astro",
@@ -118,6 +140,9 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 for _, lsp in pairs(lsp_servers) do
   require("lspconfig")[lsp].setup { capabilities = capabilities }
 end
+
+-- Remap lsp rename to <leader>rn
+vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', {})
 
 -- Colorscheme
 --vim.cmd [[colorscheme tokyonight-night]]
