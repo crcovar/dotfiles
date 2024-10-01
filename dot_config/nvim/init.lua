@@ -31,8 +31,11 @@ local plugins = {
     config = function ()
       local configs = require("nvim-treesitter.configs")
       configs.setup({
+        auto_install = true,
         ensure_installed = {
           "astro",
+          "awk",
+          "bash",
           "c",
           "cpp",
           "css",
@@ -46,15 +49,18 @@ local plugins = {
           "html",
           "javascript",
           "json",
+          "jq",
           "regex",
           "sql",
           "tsv",
           "tsx",
           "typescript",
-      },
-        sync_install = false,
+        },
         highlight = { enable = true },
+        ignore_install = {},
         indent = { enable = true },
+        modules = {},
+        sync_install = false,
       })
     end
   },
@@ -119,6 +125,8 @@ require('gitsigns').setup()
 
 local lsp_servers = {
     "astro",
+    "awk_ls",
+    "bashls",
     "cssls",
     "elixirls",
     "gopls",
