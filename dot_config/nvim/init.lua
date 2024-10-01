@@ -124,6 +124,7 @@ local lsp_servers = {
     "gopls",
     "html",
     "htmx",
+    "jq",
     "pylsp",
     "lua_ls",
     "ts_ls",
