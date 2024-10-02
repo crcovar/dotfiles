@@ -5,6 +5,9 @@ set shiftwidth=2
 set expandtab
 set colorcolumn=72
 
+" system clipboard
+set clipboard=unnamedplus
+
 "highlight Normal ctermbg=none guibg=none
 hi SpellBad   guisp=red    gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl
 hi SpellCap   guisp=yellow gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl
