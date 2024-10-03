@@ -43,3 +43,8 @@ export NVM_DIR="$HOME/.nvm"
 if [ -x "$(command -v nvim)" ]; then
     export EDITOR=nvim
 fi
+
+# Finally show fastfetch on terminal start if installed
+if [ -x "$(command -v fastfetch)" ]; then
+    fastfetch
+fi
