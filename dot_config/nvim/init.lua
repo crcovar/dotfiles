@@ -124,17 +124,18 @@ require("lazy").setup(plugins, opts)
 require('gitsigns').setup()
 
 local lsp_servers = {
-    "astro",
-    "awk_ls",
-    "bashls",
-    "cssls",
-    "elixirls",
-    "gopls",
-    "html",
-    "htmx",
-    "pylsp",
-    "lua_ls",
-    "ts_ls",
+  "astro",
+  "awk_ls",
+  "bashls",
+  "cssls",
+  "elixirls",
+  "jsonls",
+  "gopls",
+  "html",
+  "htmx",
+  "pylsp",
+  "lua_ls",
+  "ts_ls",
 },
 -- LSP Setup
 require("mason").setup()
