@@ -106,7 +106,7 @@ local plugins = {
     end,
   },
   { "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencie = { "nvim-lua/plenary.nvim" },
     lazy = true
   },
   {
@@ -122,6 +122,7 @@ local opts = {}
 require("lazy").setup(plugins, opts)
 
 require('gitsigns').setup()
+require('todo-comments').setup()
 
 local lsp_servers = {
   "astro",
