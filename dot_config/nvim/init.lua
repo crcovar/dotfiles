@@ -114,7 +114,8 @@ local plugins = {
     lazy = false,
     priority = 1000,
     opts = {},
-  }
+  },
+  { 'akinsho/git-conflict.nvim', version = "*", config = true },
 }
 
 local opts = {}
