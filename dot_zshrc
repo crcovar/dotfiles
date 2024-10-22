@@ -83,8 +83,8 @@ export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
 export KEYTIMEOUT=1
 
 #XDG Configuration
-export XDG_DATA_HOME="~/.local/share"
-export XDG_CONFIG_HOME="~/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_CONFIG_HOME="${HOME}/.config"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
