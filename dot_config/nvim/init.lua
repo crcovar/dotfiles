@@ -65,8 +65,10 @@ local plugins = {
     end
   },
   { "nvim-treesitter/nvim-treesitter-textobjects" },
-  { "williamboman/mason.nvim" },
-  { "williamboman/mason-lspconfig.nvim", dependencies = { "hrsh7th/cmp-nvim-lsp" } },
+  { "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+  },
   { "mfussenegger/nvim-dap" },
   { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"}},
   { "chrisgrieser/nvim-spider", lazy = true },
@@ -116,7 +118,6 @@ local plugins = {
     opts = {},
   },
   { 'akinsho/git-conflict.nvim', version = "*", config = true },
-  { 'nanotee/sqls.nvim', lazy = true }
 }
 
 local opts = {}
@@ -126,6 +127,7 @@ require("lazy").setup(plugins, opts)
 require('gitsigns').setup()
 require('todo-comments').setup()
 
+-- We don't have lua_ls here because its covered by lazydev
 local lsp_servers = {
   "astro",
   "awk_ls",
@@ -138,7 +140,6 @@ local lsp_servers = {
   "htmx",
   "lua_ls",
   "pylsp",
-  "sqls",
   "ts_ls",
   "zls",
 },
@@ -156,6 +157,7 @@ for _, lsp in pairs(lsp_servers) do
 end
 -- sqls gets special treatment
 require("lspconfig").sqls.setup{
+  capabilities = capabilities,
   on_attach = function(client, bufnr)
     require('sqls').on_attach(client, bufnr)
   end
