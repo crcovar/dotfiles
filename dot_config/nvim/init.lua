@@ -116,6 +116,7 @@ local plugins = {
     opts = {},
   },
   { 'akinsho/git-conflict.nvim', version = "*", config = true },
+  { 'nanotee/sqls.nvim', lazy = true }
 }
 
 local opts = {}
@@ -135,9 +136,11 @@ local lsp_servers = {
   "gopls",
   "html",
   "htmx",
-  "pylsp",
   "lua_ls",
+  "pylsp",
+  "sqls",
   "ts_ls",
+  "zls",
 },
 -- LSP Setup
 require("mason").setup()
@@ -151,6 +154,12 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 for _, lsp in pairs(lsp_servers) do
   require("lspconfig")[lsp].setup { capabilities = capabilities }
 end
+-- sqls gets special treatment
+require("lspconfig").sqls.setup{
+  on_attach = function(client, bufnr)
+    require('sqls').on_attach(client, bufnr)
+  end
+}
 
 -- Remap lsp rename to <leader>rn
 vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', {})
