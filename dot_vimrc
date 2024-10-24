@@ -23,6 +23,5 @@ endif
 
 " neovim specific items
 if has('nvim')
-    colorscheme tokyonight
 endif
 
