@@ -118,6 +118,7 @@ local plugins = {
     opts = {},
   },
   { 'akinsho/git-conflict.nvim', version = "*", config = true },
+  { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", lazy = true },
 }
 
 local opts = {}
@@ -140,6 +141,7 @@ local lsp_servers = {
   "htmx",
   "lua_ls",
   "pylsp",
+  "tailwindcss",
   "ts_ls",
   "zls",
 },
@@ -162,6 +164,8 @@ require("lspconfig").sqls.setup{
     require('sqls').on_attach(client, bufnr)
   end
 }
+
+require('lsp_lines').setup()
 
 -- Remap lsp rename to <leader>rn
 vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', {})
