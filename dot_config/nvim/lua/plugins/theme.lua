@@ -98,7 +98,7 @@ return {
   },
   -- Extra attention for certain comments
   { "folke/todo-comments.nvim",
-    dependencie = { "nvim-lua/plenary.nvim" },
-    lazy = true,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
   },
 }

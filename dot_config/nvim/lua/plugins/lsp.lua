@@ -29,6 +29,9 @@ return {
     "neovim/nvim-lspconfig",
     lazy = false,
     dependencies = { "hrsh7th/cmp-nvim-lsp", opts = {} },
+    keys = {
+      { "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", mode = "n" }
+    },
     config = function ()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       for _, lsp in pairs(lsp_servers) do
@@ -42,10 +45,11 @@ return {
         end
       }
     end,
-    init = function ()
+    --[[init = function ()
       -- Remap lsp rename to <leader>rn
       vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', {})
     end
+    ]]--
   },
   { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", lazy = true, opts = {}, },
 }
