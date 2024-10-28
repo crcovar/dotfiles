@@ -31,6 +31,7 @@ return {
           "typescript",
         },
         highlight = { enable = true },
+        additional_vim_regex_highlighting = false,
         ignore_install = {},
         indent = { enable = true },
         modules = {},
