@@ -3,7 +3,7 @@ set numberwidth=5
 set cursorline
 set shiftwidth=2
 set expandtab
-set colorcolumn=72
+set colorcolumn=72,80
 
 " system clipboard
 set clipboard=unnamedplus
