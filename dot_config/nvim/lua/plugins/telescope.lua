@@ -10,6 +10,8 @@ return {
       { "<leader>fg", builtin.live_grep, mode = "n" },
       { "<leader>fb", builtin.buffers, mode = "n" },
       { "<leader>fh", builtin.help_tags, mode = "n" },
+      { "<leader>fr", builtin.oldfiles, mode = "n" },
+      { "<leader>fc", builtin.commands, mode = "n" },
     },
     opts = {},
   },
