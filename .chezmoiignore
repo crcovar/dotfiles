@@ -4,6 +4,7 @@ LICENSE
 
 {{ if ne .chezmoi.os "darwin" }}
 # Ignore Mac OS files if not Mac OS
+dot_config/private_karabiner
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
