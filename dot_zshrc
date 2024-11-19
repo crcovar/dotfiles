@@ -144,3 +144,10 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Run fastfetch if installed
+if command -v fastfetch &>/dev/null; then
+  fastfetch
+  echo
+fi
+
