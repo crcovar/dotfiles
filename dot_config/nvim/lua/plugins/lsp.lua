@@ -22,7 +22,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim", opts = {
       automatic_installation = true,
-      ensure_installed = lsp_servers
+      ensure_installed = { "sqls", unpack(lsp_servers) }
     },
   },
   {

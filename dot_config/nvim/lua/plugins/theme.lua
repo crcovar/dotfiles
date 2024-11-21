@@ -102,4 +102,6 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
+  -- Rainbow Trails
+  { "sedm0784/vim-rainbow-trails", },
 }

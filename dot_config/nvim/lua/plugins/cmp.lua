@@ -32,4 +32,9 @@ return {
     end,
   },
   { "hrsh7th/cmp-nvim-lsp" },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = {},
+  }
 }
