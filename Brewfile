@@ -1,4 +1,6 @@
 tap "homebrew/bundle"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
 # Like neofetch, but much faster because written mostly in C
@@ -15,6 +17,8 @@ brew "luarocks"
 brew "neovim"
 # Platform built on V8 to build network applications
 brew "node"
+# Fast, disk space efficient package manager
+brew "pnpm"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Safe, concurrent, practical language
@@ -35,5 +39,11 @@ cask "bartender"
 cask "iterm2"
 # Keyboard customiser
 cask "karabiner-elements"
+# GPU-based terminal emulator
+cask "kitty"
+# Kubernetes and container management on the desktop
+cask "rancher"
+# Multimedia player
+cask "vlc"
 # Video communication and virtual meeting platform
 cask "zoom"
