@@ -13,3 +13,7 @@ vim.keymap.set('n', "<leader>fh", builtin.help_tags, { desc = "Telescope help ta
 vim.keymap.set('n', "<leader>fr", builtin.oldfiles, { desc = "Telescope old files" })
 vim.keymap.set('n', "<leader>fc", builtin.commands, { desc = "Telesceope commands" })
 
+-- Neotest Keybindings
+vim.api.nvim_set_keymap("n", "<leader>tn", "<cmd>lua require('neotest').run.run()<cr>", {})
+vim.api.nvim_set_keymap("n", "<leader>tf", "<cmd>lua require('neotest').run.rule(vim.fn.expand('%'))<cr>", {})
+vim.api.nvim_set_keymap("n", "<leader>tw", "<cmd>lua require('neotest').run.run({ jestCommand = 'jest --watch ' })<cr>", {})
