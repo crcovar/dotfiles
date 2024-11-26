@@ -147,7 +147,7 @@ esac
 
 # Run fastfetch if installed
 if command -v fastfetch &>/dev/null; then
-  fastfetch
+  fastfetch -l small
   echo
 fi
 

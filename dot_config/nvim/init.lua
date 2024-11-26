@@ -16,4 +16,5 @@ vim.keymap.set('n', "<leader>fc", builtin.commands, { desc = "Telesceope command
 -- Neotest Keybindings
 vim.api.nvim_set_keymap("n", "<leader>tn", "<cmd>lua require('neotest').run.run()<cr>", {})
 vim.api.nvim_set_keymap("n", "<leader>tf", "<cmd>lua require('neotest').run.rule(vim.fn.expand('%'))<cr>", {})
+vim.api.nvim_set_keymap("n", "<leader>ts", "<cmd>lua require('neotest').run.run(vim.fn.getcwd())<cr>", {})
 vim.api.nvim_set_keymap("n", "<leader>tw", "<cmd>lua require('neotest').run.run({ jestCommand = 'jest --watch ' })<cr>", {})

@@ -72,6 +72,15 @@
                         }
                     ],
                     "identifiers": { "is_keyboard": true }
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 544,
+                        "vendor_id": 13364
+                    },
+                    "ignore": false
                 }
             ],
             "fn_function_keys": [

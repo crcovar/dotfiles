@@ -2593,9 +2593,9 @@ cursor_shape_unfocused hollow
 
 
 # BEGIN_KITTY_FONTS
-font_family      family="FiraCode Nerd Font Mono"
+font_family      family='FiraCode Nerd Font Mono' postscript_name=FiraCodeNFM-Reg
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
-disable_ligatures never
+disable_ligatures_in tab cursor
 # END_KITTY_FONTS
