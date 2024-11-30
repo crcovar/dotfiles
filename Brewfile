@@ -41,8 +41,6 @@ cask "iterm2"
 cask "karabiner-elements"
 # GPU-based terminal emulator
 cask "kitty"
-# Kubernetes and container management on the desktop
-cask "rancher"
 # Multimedia player
 cask "vlc"
 # Video communication and virtual meeting platform
