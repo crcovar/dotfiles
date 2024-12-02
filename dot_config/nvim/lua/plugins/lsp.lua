@@ -4,7 +4,6 @@ local lsp_servers = {
   "awk_ls",
   "bashls",
   "cssls",
-  "elixirls",
   "emmet_language_server",
   "jsonls",
   "gopls",
