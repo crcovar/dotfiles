@@ -1,146 +1,150 @@
 {
-    "profiles": [
-        {
-            "complex_modifications": {
-                "rules": [
-                    {
-                        "description": "Change caps_lock to control if pressed with other keys, to escape if pressed alone.",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [{ "description": "Apple keyboards", "vendor_id": 1452 }],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "caps_lock",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "left_control" }],
-                                "to_if_alone": [{ "key_code": "escape" }],
-                                "type": "basic"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "devices": [
-                {
-                    "fn_function_keys": [
-                        {
-                            "from": { "key_code": "f1" },
-                            "to": [{ "consumer_key_code": "display_brightness_decrement" }]
-                        },
-                        {
-                            "from": { "key_code": "f2" },
-                            "to": [{ "consumer_key_code": "display_brightness_increment" }]
-                        },
-                        {
-                            "from": { "key_code": "f3" },
-                            "to": [{ "apple_vendor_keyboard_key_code": "mission_control" }]
-                        },
-                        {
-                            "from": { "key_code": "f4" },
-                            "to": [{ "apple_vendor_keyboard_key_code": "spotlight" }]
-                        },
-                        {
-                            "from": { "key_code": "f5" },
-                            "to": [{ "consumer_key_code": "dictation" }]
-                        },
-                        {
-                            "from": { "key_code": "f6" },
-                            "to": [{ "apple_vendor_keyboard_key_code": "launchpad" }]
-                        },
-                        {
-                            "from": { "key_code": "f7" },
-                            "to": [{ "consumer_key_code": "rewind" }]
-                        },
-                        {
-                            "from": { "key_code": "f8" },
-                            "to": [{ "consumer_key_code": "play_or_pause" }]
-                        },
-                        {
-                            "from": { "key_code": "f9" },
-                            "to": [{ "consumer_key_code": "fast_forward" }]
-                        },
-                        {
-                            "from": { "key_code": "f10" },
-                            "to": [{ "consumer_key_code": "mute" }]
-                        },
-                        {
-                            "from": { "key_code": "f11" },
-                            "to": [{ "consumer_key_code": "volume_decrement" }]
-                        },
-                        {
-                            "from": { "key_code": "f12" },
-                            "to": [{ "consumer_key_code": "volume_increment" }]
-                        }
+  "profiles": [
+    {
+      "complex_modifications": {
+        "rules": [
+          {
+            "description": "Change caps_lock to control if pressed with other keys, to escape if pressed alone.",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
                     ],
-                    "identifiers": { "is_keyboard": true }
+                    "type": "device_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "caps_lock",
+                  "modifiers": { "optional": ["any"] }
                 },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": true,
-                        "product_id": 544,
-                        "vendor_id": 13364
-                    },
-                    "ignore": false
-                }
-            ],
-            "fn_function_keys": [
-                {
-                    "from": { "key_code": "f1" },
-                    "to": [{ "key_code": "f1" }]
-                },
-                {
-                    "from": { "key_code": "f2" },
-                    "to": [{ "key_code": "f2" }]
-                },
-                {
-                    "from": { "key_code": "f3" },
-                    "to": [{ "key_code": "f3" }]
-                },
-                {
-                    "from": { "key_code": "f4" },
-                    "to": [{ "key_code": "f4" }]
-                },
-                {
-                    "from": { "key_code": "f5" },
-                    "to": [{ "key_code": "f5" }]
-                },
-                {
-                    "from": { "key_code": "f7" },
-                    "to": [{ "key_code": "f7" }]
-                },
-                {
-                    "from": { "key_code": "f8" },
-                    "to": [{ "key_code": "f8" }]
-                },
-                {
-                    "from": { "key_code": "f9" },
-                    "to": [{ "key_code": "f9" }]
-                },
-                {
-                    "from": { "key_code": "f10" },
-                    "to": [{ "key_code": "f10" }]
-                },
-                {
-                    "from": { "key_code": "f11" },
-                    "to": [{ "key_code": "f11" }]
-                },
-                {
-                    "from": { "key_code": "f12" },
-                    "to": [{ "key_code": "f12" }]
-                }
-            ],
-            "name": "Default profile",
-            "selected": true,
-            "virtual_hid_keyboard": {
-                "country_code": 0,
-                "keyboard_type_v2": "ansi"
+                "to": [{ "key_code": "left_control" }],
+                "to_if_alone": [{ "key_code": "escape" }],
+                "type": "basic"
+              }
+            ]
+          }
+        ]
+      },
+      "devices": [
+        {
+          "fn_function_keys": [
+            {
+              "from": { "key_code": "f1" },
+              "to": [{ "consumer_key_code": "display_brightness_decrement" }]
+            },
+            {
+              "from": { "key_code": "f2" },
+              "to": [{ "consumer_key_code": "display_brightness_increment" }]
+            },
+            {
+              "from": { "key_code": "f3" },
+              "to": [{ "apple_vendor_keyboard_key_code": "mission_control" }]
+            },
+            {
+              "from": { "key_code": "f4" },
+              "to": [{ "apple_vendor_keyboard_key_code": "spotlight" }]
+            },
+            {
+              "from": { "key_code": "f5" },
+              "to": [{ "consumer_key_code": "dictation" }]
+            },
+            {
+              "from": { "key_code": "f6" },
+              "to": [{ "apple_vendor_keyboard_key_code": "launchpad" }]
+            },
+            {
+              "from": { "key_code": "f7" },
+              "to": [{ "consumer_key_code": "rewind" }]
+            },
+            {
+              "from": { "key_code": "f8" },
+              "to": [{ "consumer_key_code": "play_or_pause" }]
+            },
+            {
+              "from": { "key_code": "f9" },
+              "to": [{ "consumer_key_code": "fast_forward" }]
+            },
+            {
+              "from": { "key_code": "f10" },
+              "to": [{ "consumer_key_code": "mute" }]
+            },
+            {
+              "from": { "key_code": "f11" },
+              "to": [{ "consumer_key_code": "volume_decrement" }]
+            },
+            {
+              "from": { "key_code": "f12" },
+              "to": [{ "consumer_key_code": "volume_increment" }]
             }
+          ],
+          "identifiers": { "is_keyboard": true }
+        },
+        {
+          "identifiers": {
+            "is_keyboard": true,
+            "is_pointing_device": true,
+            "product_id": 544,
+            "vendor_id": 13364
+          },
+          "ignore": false
         }
-    ]
+      ],
+      "fn_function_keys": [
+        {
+          "from": { "key_code": "f1" },
+          "to": [{ "key_code": "f1" }]
+        },
+        {
+          "from": { "key_code": "f2" },
+          "to": [{ "key_code": "f2" }]
+        },
+        {
+          "from": { "key_code": "f3" },
+          "to": [{ "key_code": "f3" }]
+        },
+        {
+          "from": { "key_code": "f4" },
+          "to": [{ "key_code": "f4" }]
+        },
+        {
+          "from": { "key_code": "f5" },
+          "to": [{ "key_code": "f5" }]
+        },
+        {
+          "from": { "key_code": "f7" },
+          "to": [{ "key_code": "f7" }]
+        },
+        {
+          "from": { "key_code": "f8" },
+          "to": [{ "key_code": "f8" }]
+        },
+        {
+          "from": { "key_code": "f9" },
+          "to": [{ "key_code": "f9" }]
+        },
+        {
+          "from": { "key_code": "f10" },
+          "to": [{ "key_code": "f10" }]
+        },
+        {
+          "from": { "key_code": "f11" },
+          "to": [{ "key_code": "f11" }]
+        },
+        {
+          "from": { "key_code": "f12" },
+          "to": [{ "key_code": "f12" }]
+        }
+      ],
+      "name": "Default profile",
+      "selected": true,
+      "virtual_hid_keyboard": {
+        "country_code": 0,
+        "keyboard_type_v2": "ansi"
+      }
+    }
+  ]
 }
