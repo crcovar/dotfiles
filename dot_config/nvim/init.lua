@@ -21,3 +21,7 @@ vim.api.nvim_set_keymap("n", "<leader>tw", "<cmd>lua require('neotest').run.run(
 
 -- Local project configuration
 vim.o.exrc = true
+
+-- Undercurls
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])

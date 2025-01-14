@@ -29,7 +29,8 @@ return {
     lazy = false,
     dependencies = { "hrsh7th/cmp-nvim-lsp", opts = {} },
     keys = {
-      { "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", mode = "n" }
+      { "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", mode = "n" },
+      { "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", mode = "n" },
     },
     config = function ()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -50,5 +51,12 @@ return {
     end
     ]]--
   },
-  { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", lazy = true, opts = {}, },
+  --[[
+  { "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    config = function ()
+      vim.diagnostic.config({ virtual_text = true })
+    end,
+    opts = {},
+  },
+  ]]--
 }
