@@ -62,6 +62,8 @@ cask "ghostty"
 cask "iterm2"
 # Keyboard customiser
 cask "karabiner-elements"
+# Open-source keystroke visualiser
+cask "keycastr"
 # GPU-based terminal emulator
 cask "kitty"
 # Knowledge base that works on top of a local folder of plain text Markdown files
