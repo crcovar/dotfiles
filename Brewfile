@@ -10,10 +10,6 @@ brew "btop"
 brew "python@3.13"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
-# Container runtimes on MacOS (and Linux) with minimal setup
-brew "colima"
-# Isolated development environments using Docker
-brew "docker-compose"
 # Functional metaprogramming aware language built on Erlang VM
 brew "elixir"
 # Like neofetch, but much faster because written mostly in C
@@ -48,24 +44,16 @@ brew "tmux"
 brew "wget"
 # Application launcher and productivity software
 cask "alfred"
-# Chromium based browser
-cask "arc"
 # Menu bar icon organiser
 cask "bartender"
-# App to build and share containerised applications and microservices
-cask "docker"
 # Calendar software
 cask "fantastical"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
 # Keyboard customiser
 cask "karabiner-elements"
 # Open-source keystroke visualiser
 cask "keycastr"
-# GPU-based terminal emulator
-cask "kitty"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # To-do list
