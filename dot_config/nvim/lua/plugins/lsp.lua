@@ -3,7 +3,6 @@ local lsp_servers = {
   "astro",
   "awk_ls",
   "bashls",
-  "cssls",
   "emmet_language_server",
   "jsonls",
   "gopls",
@@ -21,7 +20,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim", opts = {
       automatic_installation = true,
-      ensure_installed = { "sqls", unpack(lsp_servers) }
+      ensure_installed = { "cssls", "sqls", unpack(lsp_servers) }
     },
   },
   {
@@ -43,6 +42,17 @@ return {
         on_attach = function(client, bufnr)
           require('sqls').on_attach(client, bufnr)
         end
+      }
+      -- cssls setup to ignore tailwindcss unknown at rules
+      require("lspconfig").cssls.setup {
+        capabilities = capabilities,
+        settings = {
+          css = {
+            lint = {
+              unknownAtRules = "ignore",
+            }
+          }
+        }
       }
     end,
     --[[init = function ()

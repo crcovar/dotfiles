@@ -19,7 +19,7 @@ return {
     end
   },
   {
-    "folke/tokyonight.nvim",
+    "sainnhe/everforest",
     lazy = false,
     priority = 1000,
   },

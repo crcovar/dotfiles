@@ -93,6 +93,7 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 
 # Use nvim if available
 if type nvim > /dev/null 2>&1 ; then
+  alias vi='nvim'
 	alias vim='nvim'
 fi
 
