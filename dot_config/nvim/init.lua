@@ -1,5 +1,6 @@
 require("config.lazy")
 
+
 -- Setup folding on treesitter
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -25,3 +26,18 @@ vim.o.exrc = true
 -- Undercurls
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
+-- enable lsp completion
+vim.opt.completeopt = { "fuzzy", "menuone", "noinsert", "popup", }
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
+    callback = function(ev)
+        vim.lsp.completion.enable(true, ev.data.client_id, ev.buf, {
+      autotrigger = true,
+      convert = function(item) return { abbr = item.label:gsub("%b()", "") }
+      end,
+    })
+    end,
+})
+
+vim.o.confirm = true
