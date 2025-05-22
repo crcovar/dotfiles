@@ -1,27 +1,22 @@
 local highlight = {
-    "RainbowDelimiterRed",
-    "RainbowDelimiterYellow",
-    "RainbowDelimiterBlue",
-    "RainbowDelimiterOrange",
-    "RainbowDelimiterGreen",
-    "RainbowDelimiterViolet",
-    "RainbowDelimiterCyan",
+  "RainbowDelimiterRed",
+  "RainbowDelimiterYellow",
+  "RainbowDelimiterBlue",
+  "RainbowDelimiterOrange",
+  "RainbowDelimiterGreen",
+  "RainbowDelimiterViolet",
+  "RainbowDelimiterCyan",
 }
 
 return {
   -- color scheme
   {
-    "catppuccin/nvim",
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    config = function ()
-      vim.cmd([[colorscheme catppuccin-mocha]])
+    config = function()
+      vim.cmd([[colorscheme tokyonight-night]])
     end
-  },
-  {
-    "sainnhe/everforest",
-    lazy = false,
-    priority = 1000,
   },
   -- Bottom status bar
   {
@@ -31,7 +26,7 @@ return {
       options = {
         icons_enabled = true,
         theme = 'auto',
-        component_separators = { left = '', right = ''},
+        component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
           statusline = {},
@@ -47,18 +42,18 @@ return {
         }
       },
       sections = {
-        lualine_a = {{'mode', separator = { left = '' }}},
-        lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_c = {'filename'},
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
-        lualine_y = {'progress'},
-        lualine_z = {{'location', separator = { right = '' }}}
+        lualine_a = { { 'mode', separator = { left = '' } } },
+        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_c = { 'filename' },
+        lualine_x = { 'encoding', 'fileformat', 'filetype' },
+        lualine_y = { 'progress' },
+        lualine_z = { { 'location', separator = { right = '' } } }
       },
       inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {'location'},
+        lualine_c = { 'filename' },
+        lualine_x = { 'location' },
         lualine_y = {},
         lualine_z = {}
       },
@@ -71,21 +66,25 @@ return {
   -- Rainbow parens
   {
     "HiPhish/rainbow-delimiters.nvim",
-    init = function ()
+    lazy = true,
+    init = function()
       vim.g.rainbow_delimiters = {
         highlight = highlight,
       }
     end
   },
   -- indent markings
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl",
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    lazy = true,
+    main = "ibl",
     dependencies = { "HiPhish/rainbow-delimiters.nvim" },
     opts = {
       scope = {
         highlight = highlight,
       },
     },
-    init = function ()
+    init = function()
       local hooks = require "ibl.hooks"
       -- create the highlight groups in the highlight setup hook, so they are reset
       -- every time the colorscheme changes
@@ -102,10 +101,22 @@ return {
     end
   },
   -- Extra attention for certain comments
-  { "folke/todo-comments.nvim",
+  {
+    "folke/todo-comments.nvim",
+    -- INFO
+    -- HACK
+    -- PERF
+    -- WARN
+    -- TODO
+    -- NOTE
+    -- FIX
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
+    opts = {
+      highlight = {
+        pattern = [[.*<(KEYWORDS)\s*]],
+      },
+    },
   },
   -- Rainbow Trails
-  { "sedm0784/vim-rainbow-trails", },
+  { "sedm0784/vim-rainbow-trails", lazy = true },
 }

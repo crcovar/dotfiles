@@ -11,6 +11,7 @@ return {
       "nvim-neotest/neotest-jest",
       "jfpedroza/neotest-elixir",
     },
+    lazy = true,
     config = function ()
       require("neotest").setup({
         adapters = {
