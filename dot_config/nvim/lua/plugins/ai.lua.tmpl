@@ -1,0 +1,46 @@
+return {
+  {
+    "github/copilot.vim",
+    lazy = false,
+    keys = {
+      { '<c-j>', 'copilot#Accept("\\<CR>")', mode = 'i', expr = true, replace_keycodes = false },
+    },
+    init = function()
+      vim.g.copilot_no_tab_map = true
+    end,
+  },
+  {
+    "olimorris/codecompanion.nvim",
+    opts = {
+      adapters = {
+        anthropic = function()
+          return require("codecompanion.adapters").extend("anthropic", {
+            env = {
+              url = "https://api.anthropic.com",
+              api_key = "{{ .ai.anthropic_api_key }}",
+            },
+          })
+        end,
+        ollama = function()
+          return require("codecompanion.adapters").extend("ollama", {
+            env = {
+              url = "{{ .ai.ollama_url }}",
+              api_key = "{{ .ai.ollama_api_key }}",
+            },
+            headers = {
+              ["Content-Type"] = "application/json",
+              ["Authorization"] = "Bearer ${api_key}",
+            },
+            parameters = {
+              sync = true,
+            },
+          })
+        end,
+      },
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
+}

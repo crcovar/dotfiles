@@ -58,5 +58,17 @@ vim.lsp.config('cssls', {
     }
   }
 })
+-- tailwindcss setup to use classRegex for tailwind classes
+vim.lsp.config('tailwindcss', {
+  settings = {
+    tailwindCSS = {
+      experimental = {
+        classRegex = {
+          "tw`([^`]*)",
+        },
+      },
+    },
+  }
+})
 
 vim.o.confirm = true
