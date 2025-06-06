@@ -40,35 +40,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
       convert = function(item) return { abbr = item.label:gsub("%b()", "") } end,
     })
     vim.api.nvim_create_autocmd("BufWritePre", {
-      callback = function() vim.lsp.buf.format({ async = false }) end
+      callback = function()
+        local efm = vim.lsp.get_clients({ name = 'efm', bufnr = ev.buf })
+        if vim.tbl_isempty(efm) then
+          vim.lsp.buf.format({ async = false })
+        else
+          vim.lsp.buf.format({ name = "efm", async = false })
+        end
+      end
     });
 
     vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<cr>",
       { noremap = true, silent = true })
   end,
-})
-
--- cssls setup to ignore tailwindcss unknown at rules
-vim.lsp.config('cssls', {
-  settings = {
-    css = {
-      lint = {
-        unknownAtRules = "ignore",
-      }
-    }
-  }
-})
--- tailwindcss setup to use classRegex for tailwind classes
-vim.lsp.config('tailwindcss', {
-  settings = {
-    tailwindCSS = {
-      experimental = {
-        classRegex = {
-          "tw`([^`]*)",
-        },
-      },
-    },
-  }
 })
 
 vim.o.confirm = true

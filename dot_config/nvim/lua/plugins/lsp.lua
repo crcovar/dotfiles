@@ -4,6 +4,7 @@ local lsp_servers = {
   "awk_ls",
   "bashls",
   "cssls",
+  "efm",
   "emmet_language_server",
   "jsonls",
   "gopls",
@@ -21,17 +22,12 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "neovim/nvim-lspconfig" },
-    opts = {
-      ensure_installed = lsp_servers,
-    },
+    -- opts = {
+    --   ensure_installed = lsp_servers,
+    -- },
   },
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   lazy = false,
-  --   keys = {
-  --     { "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>",        mode = "n" },
-  --     { "<leader>e",  "<cmd>lua vim.diagnostic.open_float()<CR>", mode = "n" },
-  --     { "<leader>a",  "<cmd>lua vim.lsp.buf.code_action()<CR>",   mode = "n" },
-  --   },
-  -- },
+  {
+    "creativenull/efmls-configs-nvim",
+    dependencies = { "neovim/nvim-lspconfig", },
+  },
 }
