@@ -4,22 +4,6 @@ require("config.lazy")
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
--- Telescope Keybindings
-local builtin = require "telescope.builtin"
-vim.keymap.set('n', "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
-vim.keymap.set('n', "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
-vim.keymap.set('n', "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
-vim.keymap.set('n', "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
-vim.keymap.set('n', "<leader>fr", builtin.oldfiles, { desc = "Telescope old files" })
-vim.keymap.set('n', "<leader>fc", builtin.commands, { desc = "Telesceope commands" })
-
--- Neotest Keybindings
-vim.api.nvim_set_keymap("n", "<leader>tn", "<cmd>lua require('neotest').run.run()<cr>", {})
-vim.api.nvim_set_keymap("n", "<leader>tf", "<cmd>lua require('neotest').run.rule(vim.fn.expand('%'))<cr>", {})
-vim.api.nvim_set_keymap("n", "<leader>ts", "<cmd>lua require('neotest').run.run(vim.fn.getcwd())<cr>", {})
-vim.api.nvim_set_keymap("n", "<leader>tw", "<cmd>lua require('neotest').run.run({ jestCommand = 'jest --watch ' })<cr>",
-  {})
-
 -- Local project configuration
 vim.o.exrc = true
 
@@ -28,31 +12,59 @@ vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 vim.o.spell = true
-vim.opt.spelllang = { "en_us", }
+vim.opt.spelllang = { "en_us" }
+
+local lsp_servers = {
+  "astro",
+  "awk_ls",
+  "bashls",
+  "cssls",
+  "efm",
+  "emmet_language_server",
+  "jsonls",
+  "gopls",
+  "html",
+  "lua_ls",
+  "pylsp",
+  "sqls",
+  "tailwindcss",
+  "ts_ls",
+  "zls",
+}
+vim.lsp.enable(lsp_servers)
 
 -- enable lsp completion
-vim.opt.completeopt = { "fuzzy", "menuone", "noinsert", "popup", }
+vim.opt.completeopt = { "fuzzy", "menuone", "noinsert", "popup" }
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
   callback = function(ev)
     vim.lsp.completion.enable(true, ev.data.client_id, ev.buf, {
       autotrigger = true,
-      convert = function(item) return { abbr = item.label:gsub("%b()", "") } end,
+      convert = function(item)
+        return { abbr = item.label:gsub("%b()", "") }
+      end,
     })
     vim.api.nvim_create_autocmd("BufWritePre", {
       callback = function()
-        local efm = vim.lsp.get_clients({ name = 'efm', bufnr = ev.buf })
-        if vim.tbl_isempty(efm) then
-          vim.lsp.buf.format({ async = false })
-        else
-          vim.lsp.buf.format({ name = "efm", async = false })
-        end
-      end
-    });
+        vim.lsp.buf.format({ name = "efm", async = false })
+      end,
+    })
 
-    vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<cr>",
-      { noremap = true, silent = true })
+    vim.api.nvim_set_keymap(
+      "n",
+      "<leader>e",
+      "<cmd>lua vim.diagnostic.open_float()<cr>",
+      { noremap = true, silent = true }
+    )
   end,
 })
 
 vim.o.confirm = true
+
+function fd(cmdarg, cmdcomplete)
+  local args = { "fd", "--type", "f", "--color=never" }
+  if cmdarg then
+    table.insert(args, cmdarg)
+  end
+  return vim.fn.systemlist(args)
+end
