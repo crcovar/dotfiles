@@ -1,7 +1,7 @@
 return {
   {
     "github/copilot.vim",
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
     keys = {
       { '<c-j>', 'copilot#Accept("\\<CR>")', mode = 'i', expr = true, replace_keycodes = false },
     },
