@@ -25,11 +25,9 @@ return {
           return require("codecompanion.adapters").extend("ollama", {
             env = {
               url = "{{ .ai.ollama_url }}",
-              api_key = "{{ .ai.ollama_api_key }}",
             },
             headers = {
               ["Content-Type"] = "application/json",
-              ["Authorization"] = "Bearer ${api_key}",
             },
             parameters = {
               sync = true,

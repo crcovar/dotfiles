@@ -2,6 +2,8 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    command = { "TSUpdate", "TSInstall", "TSUninstall" },
+    event = { "BufReadPost", "BufNewFile" },
     config = function ()
       local configs = require("nvim-treesitter.configs")
       configs.setup({
@@ -42,7 +44,11 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     dependencies = "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPost", "BufNewFile" },
     opts = {},
   },
-  { "nvim-treesitter/nvim-treesitter-textobjects", },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    event = { "BufReadPost", "BufNewFile" },
+  },
 }

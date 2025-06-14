@@ -9,13 +9,11 @@ return {
       { "b", "<cmd>lua require('spider').motion('b')<CR>", mode = { "n", "o", "x" }, desc = "Spider-b" },
       { "w", "<cmd>lua require('spider').motion('w')<CR>", mode = { "n", "o", "x" }, desc = "Spider-w" },
     },
-    lazy = true,
   },
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-    lazy = true,
+    event = { "BufReadPre", "BufNewFile" },
     opts = {},
   },
 }
