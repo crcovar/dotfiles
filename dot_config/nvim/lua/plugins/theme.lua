@@ -62,7 +62,7 @@ return {
       extensions = {},
     },
   },
-  -- indent markings
+  -- -- indent markings
   {
     "lukas-reineke/indent-blankline.nvim",
     dependencies = { "HiPhish/rainbow-delimiters.nvim" },

@@ -2,7 +2,6 @@ require("config.lazy")
 
 -- Setup folding on treesitter
 vim.o.foldmethod = "expr"
-vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 -- Local project configuration
 vim.o.exrc = true
@@ -49,6 +48,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.lsp.buf.format({ name = "efm", async = false })
       end,
     })
+
+    -- LSP folding if available
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client:supports_method("textDocument/foldingRange") and vim.wo.foldexpr == 0 then
+      local win = vim.api.nvim_get_current_win()
+      vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+    end
 
     vim.api.nvim_set_keymap(
       "n",
