@@ -33,11 +33,25 @@ return {
         },
         ignore_focus = {},
         always_divide_middle = true,
+        always_show_tabline = true,
         globalstatus = false,
         refresh = {
           statusline = 1000,
           tabline = 1000,
           winbar = 1000,
+          refresh_time = 16,
+          events = {
+            "WinEnter",
+            "BufEnter",
+            "BufWritePost",
+            "SessionLoadPost",
+            "FileChangedShellPost",
+            "VimResized",
+            "Filetype",
+            "CursorMoved",
+            "CursorMovedI",
+            "ModeChanged",
+          },
         },
       },
       sections = {
@@ -62,7 +76,7 @@ return {
       extensions = {},
     },
   },
-  -- -- indent markings
+  -- indent markings
   {
     "lukas-reineke/indent-blankline.nvim",
     dependencies = { "HiPhish/rainbow-delimiters.nvim" },

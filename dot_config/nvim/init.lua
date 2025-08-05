@@ -45,6 +45,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     })
     vim.api.nvim_create_autocmd("BufWritePre", {
       callback = function()
+        local efm = vim.lsp.get_clients({ name = "efm", bufnr = ev.buf })
+        if vim.tbl_isempty(efm) then
+          return
+        end
+
         vim.lsp.buf.format({ name = "efm", async = false })
       end,
     })
@@ -67,6 +72,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 vim.o.confirm = true
 
+--vim.o.statusline = "%{mode([1])} %f %(%m%h%r%)%=%=%(%P %l:%c%)"
 function fd(cmdarg, cmdcomplete)
   local args = { "fd", "--type", "f", "--color=never" }
   if cmdarg then
