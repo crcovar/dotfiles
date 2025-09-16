@@ -1,5 +1,17 @@
 require("config.lazy")
 
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.numberwidth = 5
+
+vim.o.cursorline = true
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
+vim.opt.colorcolumn = { 50, 72, 80 }
+
+vim.o.clipboard = "unnamedplus"
+vim.o.wrap = false
+
 -- Setup folding on treesitter
 vim.o.foldmethod = "expr"
 
@@ -10,8 +22,29 @@ vim.o.exrc = true
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
+-- Highlights
+vim.api.nvim_set_hl(0, "SpellBad", { sp = "red", undercurl = true })
+vim.api.nvim_set_hl(0, "SpellCap", { sp = "yellow", undercurl = true })
+vim.api.nvim_set_hl(0, "SpellRare", { sp = "blue", undercurl = true })
+vim.api.nvim_set_hl(0, "SpellLocal", { sp = "orange", undercurl = true })
+
 vim.o.spell = true
 vim.opt.spelllang = { "en_us" }
+
+-- AppleScript filetype
+vim.filetype.add({
+  extension = {
+    applescript = "applescript",
+  },
+})
+
+--autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup='Visual', timeout=300}
+vim.api.nvim_create_autocmd("TextYankPost", {
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank({ higroup = "Visual", timeout = 300 })
+  end,
+})
 
 local lsp_servers = {
   "astro",
