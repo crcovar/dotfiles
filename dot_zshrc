@@ -164,3 +164,9 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
 
 
 alias claude="/Users/charlescovar/.claude/local/claude"
+
+# HELP files
+unalias run-help 2>/dev/null
+autoload run-help
+HELPDIR=/usr/share/zsh/5.9/help
+alias help='run-help'
