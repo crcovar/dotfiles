@@ -5,9 +5,21 @@ local jq = require("efmls-configs.linters.jq")
 local prettier = require("efmls-configs.formatters.prettier_d")
 local stylua = require("efmls-configs.formatters.stylua")
 
+local fs = require("efmls-configs.fs")
+
 local languages = {
   lua = { stylua },
   go = { golint, gofmt },
+  elixir = {
+    {
+      formatCommand = string.format("%s %s", fs.executable("mix"), "format --stdin-filename ${INPUT} -"),
+      formatStdin = true,
+      rootMarkers = {
+        ".formatter.exs",
+        "mix.exs",
+      },
+    },
+  },
   javascript = { eslint, prettier },
   javascriptreact = { eslint, prettier },
   json = { jq, prettier },

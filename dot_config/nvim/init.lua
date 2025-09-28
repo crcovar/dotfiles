@@ -53,6 +53,7 @@ local lsp_servers = {
   "cssls",
   "efm",
   "emmet_language_server",
+  "expert",
   "jsonls",
   "gopls",
   "html",
@@ -83,7 +84,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
           return
         end
 
-        vim.lsp.buf.format({ name = "efm", async = false })
+        vim.lsp.buf.format({ name = "efm" })
       end,
     })
 
