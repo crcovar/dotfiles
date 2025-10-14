@@ -46,27 +46,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
-local lsp_servers = {
-  "astro",
-  "awk_ls",
-  "bashls",
-  "cssls",
-  "efm",
-  "emmet_language_server",
-  "expert",
-  "jsonls",
-  "gopls",
-  "html",
-  "lua_ls",
-  "pylsp",
-  "sqls",
-  "tailwindcss",
-  "ts_ls",
-  "zls",
-}
-vim.lsp.enable(lsp_servers)
+-- enable our generic language server, use for format on save
+vim.lsp.enable("efm")
 
--- enable lsp completion
+-- enable lsp completion, and formatting on save. Enabling of language servers
+-- is handled in each ft plugin file.
 vim.opt.completeopt = { "fuzzy", "menuone", "noinsert", "popup" }
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
