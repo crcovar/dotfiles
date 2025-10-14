@@ -31,18 +31,11 @@ vim.api.nvim_set_hl(0, "SpellLocal", { sp = "orange", undercurl = true })
 vim.o.spell = true
 vim.opt.spelllang = { "en_us" }
 
--- AppleScript filetype
-vim.filetype.add({
-  extension = {
-    applescript = "applescript",
-  },
-})
-
---autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup='Visual', timeout=300}
+-- Highlight selection on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   callback = function()
-    vim.highlight.on_yank({ higroup = "Visual", timeout = 300 })
+    vim.highlight.on_yank({ higroup = "Visual", timeout = 400 })
   end,
 })
 
@@ -74,7 +67,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- LSP folding if available
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client:supports_method("textDocument/foldingRange") and vim.wo.foldexpr == 0 then
+    if client ~= nil and client:supports_method("textDocument/foldingRange") and vim.wo.foldexpr == 0 then
       local win = vim.api.nvim_get_current_win()
       vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
     end
@@ -89,6 +82,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.o.confirm = true
+
+-- PLAYGROUND. Everything Below this line is just for messing around
+
+-- AppleScript filetype
+vim.filetype.add({
+  extension = {
+    applescript = "applescript",
+  },
+})
 
 --vim.o.statusline = "%{mode([1])} %f %(%m%h%r%)%=%=%(%P %l:%c%)"
 function fd(cmdarg, cmdcomplete)
