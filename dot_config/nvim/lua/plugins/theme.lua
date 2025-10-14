@@ -121,4 +121,12 @@ return {
   },
   -- Rainbow Trails
   { "sedm0784/vim-rainbow-trails", lazy = true },
+  -- Programmer's spellcheck
+  {
+    "psliwka/vim-dirtytalk",
+    build = ":DirtytalkUpdate",
+    config = function()
+      vim.opt.spelllang = { "en_us", "programming" }
+    end,
+  },
 }

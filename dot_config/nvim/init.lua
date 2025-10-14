@@ -29,7 +29,6 @@ vim.api.nvim_set_hl(0, "SpellRare", { sp = "blue", undercurl = true })
 vim.api.nvim_set_hl(0, "SpellLocal", { sp = "orange", undercurl = true })
 
 vim.o.spell = true
-vim.opt.spelllang = { "en_us" }
 
 -- Highlight selection on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
