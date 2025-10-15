@@ -5,7 +5,6 @@ vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
 local lsp_servers = {
   "cssls",
-  "efm",
   "html",
   "sqls",
   "tailwindcss",
