@@ -8,6 +8,15 @@ local highlight = {
   "RainbowDelimiterCyan",
 }
 
+local function branchSubstr(str)
+  local s = str:match("%a+%-%d+")
+  if s ~= nil then
+    return s
+  else
+    return str:sub(1, 10)
+  end
+end
+
 return {
   -- color scheme
   {
@@ -56,7 +65,14 @@ return {
       },
       sections = {
         lualine_a = { { "mode", separator = { left = "" } } },
-        lualine_b = { "branch", "diff", "diagnostics" },
+        lualine_b = {
+          {
+            "branch",
+            fmt = branchSubstr,
+          },
+          "diff",
+          "diagnostics",
+        },
         lualine_c = { "filename" },
         lualine_x = { "encoding", "fileformat", "filetype" },
         lualine_y = { "progress" },

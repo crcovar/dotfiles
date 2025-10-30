@@ -60,7 +60,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
           return
         end
 
-        vim.lsp.buf.format({ name = "efm" })
+        vim.lsp.buf.format({ name = "efm", async = false })
       end,
     })
 
