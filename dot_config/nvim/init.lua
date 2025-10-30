@@ -58,16 +58,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local clients = vim.lsp.get_clients({ bufnr = ev.buf })
         if
           vim.tbl_contains(clients, function(t)
-            return t.name == "efm"
-          end, { predicate = true })
-        then
-          vim.lsp.buf.format({ name = "efm", async = false })
-        elseif
-          vim.tbl_contains(clients, function(t)
             return t.name == "zls"
           end, { predicate = true })
         then
           vim.lsp.buf.format({ name = "zls", async = false })
+        elseif
+          vim.tbl_contains(clients, function(t)
+            return t.name == "efm"
+          end, { predicate = true })
+        then
+          vim.lsp.buf.format({ name = "efm", async = false })
         else
           return
         end
