@@ -12,10 +12,32 @@ vim.opt.colorcolumn = { 50, 72, 80 }
 vim.o.clipboard = "unnamedplus"
 vim.o.wrap = false
 
--- Setup folding on treesitter
+-- Setup folding
 vim.o.foldmethod = "expr"
+-- Keep folds from collapsing while we work
+local folds_group = vim.api.nvim_create_augroup("folds", { clear = true })
 
--- Local project configuration
+vim.api.nvim_create_autocmd("InsertEnter", {
+  group = folds_group,
+  pattern = "*",
+  callback = function()
+    vim.w.oldfdm = vim.wo.foldmethod
+    vim.wo.foldmethod = "manual"
+  end,
+})
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+  group = folds_group,
+  pattern = "*",
+  callback = function()
+    if vim.w.oldfdm then
+      vim.wo.foldmethod = vim.w.oldfdm
+      vim.w.oldfdm = nil
+    end
+    vim.cmd("normal! zv")
+  end,
+}) -- Local project configuration
+
 vim.o.exrc = true
 
 -- Undercurls
@@ -68,8 +90,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
           end, { predicate = true })
         then
           vim.lsp.buf.format({ name = "efm", async = false })
-        else
-          return
         end
       end,
     })
