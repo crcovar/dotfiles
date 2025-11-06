@@ -11,6 +11,7 @@ return {
       { "<leader>fh", "<cmd>Telescope help_tags<CR>", mode = { "n" }, desc = "Help Tags" },
       { "<leader>fr", "<cmd>Telescope oldfiles<CR>", mode = { "n" }, desc = "Recent Files" },
       { "<leader>fc", "<cmd>Telescope commands<CR>", mode = { "n" }, desc = "Commands" },
+      { "<leader>ft", "<cmd>TodoTelescope <CR>", mode = { "n" }, desc = "Find todos" },
     },
   },
 }

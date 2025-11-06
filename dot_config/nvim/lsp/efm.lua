@@ -23,6 +23,7 @@ local languages = {
   javascript = { eslint, prettier },
   javascriptreact = { eslint, prettier },
   json = { jq, prettier },
+  markdown = { prettier },
   typescript = { eslint, prettier },
   typescriptreact = { eslint, prettier },
   html = { prettier },

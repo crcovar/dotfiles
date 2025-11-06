@@ -56,7 +56,7 @@ vim.o.spell = true
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   callback = function()
-    vim.highlight.on_yank({ higroup = "Visual", timeout = 400 })
+    vim.highlight.on_yank({ higroup = "Visual", timeout = 500 })
   end,
 })
 
@@ -112,6 +112,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 vim.o.confirm = true
 
+vim.cmd.colorscheme("covar")
 -- PLAYGROUND. Everything Below this line is just for messing around
 
 -- AppleScript filetype

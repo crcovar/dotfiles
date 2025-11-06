@@ -23,13 +23,13 @@ return {
     "folke/tokyonight.nvim",
     priority = 1000,
     config = function()
-      vim.cmd([[colorscheme tokyonight-night]])
+      vim.cmd.colorscheme("tokyonight-night")
     end,
   },
   -- Bottom status bar
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons", opts = {} },
     opts = {
       options = {
         icons_enabled = true,
@@ -106,38 +106,22 @@ return {
         highlight = highlight,
       },
     },
-    -- init = function()
-    --   local hooks = require("ibl.hooks")
-    --   -- create the highlight groups in the highlight setup hook, so they are reset
-    --   -- every time the colorscheme changes
-    --   hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-    --     vim.api.nvim_set_hl(0, "RainbowDelimiterRed", { fg = "#E06C75" })
-    --     vim.api.nvim_set_hl(0, "RainbowDelimiterYellow", { fg = "#E5C07B" })
-    --     vim.api.nvim_set_hl(0, "RainbowDelimiterBlue", { fg = "#61AFEF" })
-    --     vim.api.nvim_set_hl(0, "RainbowDelimiterOrange", { fg = "#D19A66" })
-    --     vim.api.nvim_set_hl(0, "RainbowDelimiterGreen", { fg = "#98C379" })
-    --     vim.api.nvim_set_hl(0, "RainbowDelimiterViolet", { fg = "#C678DD" })
-    --     vim.api.nvim_set_hl(0, "RainbowDelimiterCyan", { fg = "#56B6C2" })
-    --   end)
-    --   vim.g.rainbow_delimiters = { highlight = highlight }
-    --   require("ibl").setup({ indent = { highlight = highlight } })
-    --   hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
-    -- end,
   },
   -- Extra attention for certain comments
   {
     "folke/todo-comments.nvim",
-    -- INFO
-    -- HACK
-    -- PERF
-    -- WARN
-    -- TODO
-    -- NOTE
-    -- FIX
+    -- FIX: - something needing to fix
+    -- HACK: - This shit makes no sense, but is fixing something
+    -- INFO: - Just some information or context
+    -- NOTE: - Just a comment needing attention
+    -- PERF: - Something to do with performance
+    -- TEST: - Indicate a test
+    -- TODO: - Action item for the future
+    -- WARN: - Warning for the next developer to watch out for
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       highlight = {
-        pattern = [[.*<(KEYWORDS)\s*]],
+        pattern = ".*<(KEYWORDS)s*",
       },
     },
   },
