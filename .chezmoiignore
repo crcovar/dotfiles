@@ -11,3 +11,14 @@ Brewfile
 {{ if ne .chezmoi.os "linux" }}
 # Ignore Linux files if not Linux
 {{ end }}
+
+.claude/history.jsonl
+.claude/projects/
+.claude/session-env/
+.claude/debug/
+.claude/file-history/
+.claude/shell-snapshots/
+.claude/statsig/
+.claude/todos/
+.claude/local/node_modules/
+.claude/local/package-lock.json
