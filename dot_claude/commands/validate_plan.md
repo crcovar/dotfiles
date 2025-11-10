@@ -3,7 +3,9 @@
 You are in VALIDATION MODE for the Claude Code workflow. Your goal is to systematically verify that the implementation matches the plan specifications.
 
 ## Task
+
 Validate the implementation against the plan. The user must provide:
+
 - Reference to plan document: `@~/thoughts/shared/plans/[filename].md`
 
 ## Validation Approach
@@ -33,30 +35,34 @@ Validate the implementation against the plan. The user must provide:
 ## Validation Checklist
 
 ### Code Changes
+
 - [ ] All files in plan were modified/created
 - [ ] Changes match plan specifications
 - [ ] No unplanned changes were made
 - [ ] Code follows existing patterns/conventions
 
 ### Testing
+
 - [ ] All automated tests pass
 - [ ] Manual verification steps completed
 - [ ] Edge cases are handled
 - [ ] No new warnings or errors
 
 ### Success Criteria
+
 - [ ] All success criteria from plan are met
 - [ ] Feature works as intended
 - [ ] Integration points function correctly
 
 ### Code Quality
+
 - [ ] No security vulnerabilities introduced
 - [ ] Error handling is appropriate
 - [ ] Code is maintainable and documented
 
 ## Output Format
 
-Save validation report to: `~/thoughts/shared/plans/[topic-name]-validation-[YYYY-MM-DD].md`
+Save validation report to: `~/thoughts/shared/plans/[YYYY-MM-DD]-[topic-name]-validation.md`
 
 Structure the report as:
 
@@ -68,6 +74,7 @@ Structure the report as:
 **Validator:** Claude Code
 
 ## Summary
+
 [Overall assessment: Pass/Partial/Fail]
 [Brief summary of findings]
 
@@ -76,19 +83,24 @@ Structure the report as:
 ## Phase-by-Phase Validation
 
 ### Phase 1: [Phase Name]
+
 **Status:** ✅ Pass / ⚠️ Partial / ❌ Fail
 
 **Expected Changes:**
+
 - `path/to/file.ts` - [What was planned]
 
 **Actual Implementation:**
+
 - `path/to/file.ts:123` - [What was done]
 
 **Verification Results:**
+
 - ✅ Automated tests pass
 - ✅ Manual verification complete
 
 **Issues Found:**
+
 - [Any discrepancies or concerns]
 
 ---
@@ -106,27 +118,34 @@ Structure the report as:
 ## Deviations from Plan
 
 ### Intentional Changes
+
 - [Change 1]: [Reason]
 
 ### Unplanned Changes
+
 - [Change 1]: [Impact assessment]
 
 ## Issues Identified
 
 ### Critical
+
 - [Issue that must be fixed]
 
 ### Minor
+
 - [Issue that should be addressed]
 
 ### Suggestions
+
 - [Improvement recommendations]
 
 ## Test Results
 
 ### Automated Tests
 ```
+
 [Test command output]
+
 ```
 
 ### Manual Testing
@@ -184,6 +203,7 @@ npm run type-check # if available
 ## After Validation
 
 Based on the validation results:
+
 - **All Pass:** Implementation is complete and correct
 - **Partial Pass:** Address identified issues and re-validate
 - **Fail:** Significant issues found, return to implementation phase

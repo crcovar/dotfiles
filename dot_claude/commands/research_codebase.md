@@ -3,6 +3,7 @@
 You are in RESEARCH MODE for the Claude Code workflow. Your goal is to understand the existing codebase WITHOUT writing any code.
 
 ## Task
+
 Research the following topic/feature: [The user will provide the topic after this command]
 
 ## Research Approach
@@ -28,7 +29,7 @@ Research the following topic/feature: [The user will provide the topic after thi
 
 ## Output Format
 
-Save your research to: `~/thoughts/shared/research/[topic-name]-[YYYY-MM-DD].md`
+Save your research to: `~/thoughts/shared/research/[YYYY-MM-DD]-[topic-name].md`
 
 Structure your research document as:
 
@@ -39,30 +40,38 @@ Structure your research document as:
 **Researcher:** Claude Code
 
 ## Executive Summary
+
 [1-2 paragraphs summarizing key findings]
 
 ## Current State Analysis
 
 ### Relevant Files and Components
+
 - `path/to/file.ts:123-145` - [Purpose and functionality]
 - `path/to/other.ts:67` - [Purpose and functionality]
 
 ### Existing Patterns and Conventions
+
 [Document the patterns you found]
 
 ### Dependencies and Integration Points
+
 [List dependencies and how they integrate]
 
 ### Architecture Overview
+
 [Describe relevant architectural decisions]
 
 ## Edge Cases and Considerations
+
 [List potential challenges, edge cases, special scenarios]
 
 ## Recommendations
+
 [Suggest approaches based on your findings]
 
 ## References
+
 [List all file paths examined with line numbers]
 ```
 

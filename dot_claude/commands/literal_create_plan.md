@@ -3,7 +3,9 @@
 You are in PLANNING MODE for the Claude Code workflow. Your goal is to create a detailed, iterative implementation plan based on research findings.
 
 ## Task
+
 Create an implementation plan. The user should provide:
+
 - Reference to research document (e.g., `@~/thoughts/shared/research/[filename].md`)
 - OR describe the feature/task to plan
 
@@ -32,7 +34,7 @@ Create an implementation plan. The user should provide:
 
 ## Output Format
 
-Save your plan to: `~/thoughts/shared/plans/[topic-name]-[YYYY-MM-DD].md`
+Save your plan to: `~/thoughts/shared/plans/[YYYY-MM-DD]-[topic-name].md`
 
 Structure your plan as:
 
@@ -43,14 +45,17 @@ Structure your plan as:
 **Based on Research:** [Link to research doc if applicable]
 
 ## Goal
+
 [Clear statement of what we're building and why]
 
 ## Success Criteria
+
 - [ ] [Criterion 1]
 - [ ] [Criterion 2]
 - [ ] [Criterion 3]
 
 ## Approach Overview
+
 [1-2 paragraphs describing the high-level approach]
 
 ---
@@ -58,44 +63,55 @@ Structure your plan as:
 ## Phase 1: [Phase Name]
 
 ### Objective
+
 [What this phase accomplishes]
 
 ### Files to Modify/Create
+
 - `path/to/file.ts:123-145` - [What changes to make]
 - `path/to/new-file.ts` - [What to create]
 
 ### Implementation Steps
+
 1. [Specific step with code snippet if helpful]
 2. [Specific step with code snippet if helpful]
 3. [Specific step with code snippet if helpful]
 
 ### Verification
+
 **Automated:**
+
 - [ ] [Test command to run]
 - [ ] [Expected output]
 
 **Manual:**
+
 - [ ] [Thing to check manually]
 - [ ] [Thing to test in UI/manually]
 
 ### Potential Issues
+
 - [What could go wrong and how to handle it]
 
 ---
 
 ## Phase 2: [Phase Name]
+
 [Repeat structure for each phase]
 
 ---
 
 ## Dependencies
+
 - [External libraries needed]
 - [System requirements]
 
 ## Rollback Plan
+
 [How to undo changes if something goes wrong]
 
 ## Notes
+
 [Any additional context or considerations]
 ```
 
@@ -113,6 +129,7 @@ Structure your plan as:
 ## Planning Checklist
 
 Before finalizing, verify:
+
 - [ ] Each phase has clear objectives
 - [ ] Each phase has specific file paths
 - [ ] Each phase has verification steps
