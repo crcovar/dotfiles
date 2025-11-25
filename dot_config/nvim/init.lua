@@ -113,6 +113,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.o.confirm = true
 
 vim.cmd.colorscheme("covar")
+
+-- Caddyfile
+vim.filetype.add({
+  extension = {
+    caddy = "caddy",
+  },
+  filename = {
+    Caddyfile = "caddy",
+    ["Caddyfile.dev"] = "caddy",
+  },
+})
+
 -- PLAYGROUND. Everything Below this line is just for messing around
 
 -- AppleScript filetype
