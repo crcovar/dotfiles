@@ -1,3 +1,3 @@
 font-family = "FiraCode Nerd Font Mono"
-theme = Apple System Colors
+theme = covar
 keybind = shift+enter=text:\n
