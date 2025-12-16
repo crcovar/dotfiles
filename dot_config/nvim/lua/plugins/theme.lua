@@ -125,6 +125,11 @@ return {
       },
     },
   },
+  -- TODO: Remove in v0.12 and replace with lsp
+  -- Color highlights
+  { "brenoprata10/nvim-highlight-colors", opts = {
+    enable_tailwind = true,
+  } },
   -- Rainbow Trails
   { "sedm0784/vim-rainbow-trails", lazy = true },
   -- Programmer's spellcheck
