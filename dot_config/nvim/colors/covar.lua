@@ -20,6 +20,56 @@ local palette = {
   },
 }
 
-vim.api.nvim_set_hl(0, "LineNr", { fg = palette.yellow, bg = palette.bright.black, bold = true })
+vim.api.nvim_set_hl(0, "background", { bg = palette.bright.black })
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = palette.black })
+
+vim.api.nvim_set_hl(0, "Folded", { bg = palette.black })
+
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = palette.yellow, bg = palette.bright.black, bold = true })
 vim.api.nvim_set_hl(0, "LineNrAbove", { fg = palette.green, bg = palette.black, bold = true })
 vim.api.nvim_set_hl(0, "LineNrBelow", { fg = palette.green, bg = palette.black, bold = true })
+
+local syntax = {
+  -- Comment = {},
+  -- Constant = {},
+  String = { fg = palette.green },
+  -- Character = {},
+  -- Number = {},
+  -- Boolean = {},
+  -- Float = {},
+  -- Identifier = {},
+  Function = { fg = palette.bright.blue },
+  -- Statement = {},
+  -- Conditional = {},
+  -- Repeat = {},
+  -- Label = {},
+  -- Operator = {},
+  Keyword = { fg = palette.magenta, bold = true },
+  -- Exception = {},
+  -- PreProc = {},
+  -- Include = {},
+  -- Define = {},
+  -- Macro = {},
+  -- PreCondit = {},
+  -- Type = {},
+  -- StorageClass = {},
+  -- Structure = {},
+  -- Typedef = {},
+  -- Special = {},
+  -- SpecialChar = {},
+  -- Tag = {},
+  -- Delimiter = {},
+  -- SpecialComment = {},
+  -- Debug = {},
+  -- Underlined = {},
+  -- Ignore = {},
+  -- Error = {},
+  -- Todo = {},
+  Added = { fg = palette.bright.white, bg = palette.bright.green, bold = true },
+  -- Changed = {},
+  -- Removed = {},
+}
+
+for k, v in pairs(syntax) do
+  vim.api.nvim_set_hl(0, k, v)
+end
