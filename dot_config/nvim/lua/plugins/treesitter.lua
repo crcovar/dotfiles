@@ -5,6 +5,10 @@ return {
     branch = "main",
     build = ":TSUpdate",
   },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+  },
   -- {
   --   "nvim-treesitter/nvim-treesitter-context",
   --   dependencies = "nvim-treesitter/nvim-treesitter",

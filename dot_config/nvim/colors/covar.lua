@@ -20,26 +20,25 @@ local palette = {
   },
 }
 
-vim.api.nvim_set_hl(0, "background", { bg = palette.bright.black })
-vim.api.nvim_set_hl(0, "ColorColumn", { bg = palette.black })
-
-vim.api.nvim_set_hl(0, "Folded", { bg = palette.black, fg = palette.cyan, standout = true })
-
-vim.api.nvim_set_hl(0, "CursorLineNr", { fg = palette.yellow, bg = palette.bright.black, bold = true })
-vim.api.nvim_set_hl(0, "LineNrAbove", { fg = palette.green, bg = palette.black, bold = true })
-vim.api.nvim_set_hl(0, "LineNrBelow", { fg = palette.green, bg = palette.black, bold = true })
-
--- spelling Highlights
-vim.api.nvim_set_hl(0, "SpellBad", { sp = palette.bright.red, undercurl = true })
-vim.api.nvim_set_hl(0, "SpellCap", { sp = palette.bright.yellow, undercurl = true })
-vim.api.nvim_set_hl(0, "SpellRare", { sp = palette.bright.blue, undercurl = true })
-vim.api.nvim_set_hl(0, "SpellLocal", { sp = palette.yellow, undercurl = true })
-
+local theme = {
+  background = { bg = palette.bright.black },
+  ColorColumn = { bg = palette.black },
+  Folded = { bg = palette.black, fg = palette.cyan },
+  CursorLineNr = { fg = palette.yellow, bg = palette.bright.black, bold = true },
+  LineNrAbove = { fg = palette.green, bg = palette.black, bold = true },
+  LineNrBelow = { fg = palette.green, bg = palette.black, bold = true },
+}
+local spelling = {
+  SpellBad = { sp = palette.bright.red, undercurl = true },
+  SpellCap = { sp = palette.bright.yellow, undercurl = true },
+  SpellRare = { sp = palette.bright.blue, undercurl = true },
+  SpellLocal = { sp = palette.yellow, undercurl = true },
+}
 local syntax = {
   Comment = { fg = palette.bright.yellow, italic = true },
   Constant = { fg = palette.yellow },
   String = { fg = palette.green },
-  Character = { fg = palette.yellow },
+  Character = { fg = palette.bright.green, bold = true },
   Number = { fg = palette.yellow },
   Boolean = { fg = palette.yellow },
   Float = { fg = palette.yellow },
@@ -49,7 +48,7 @@ local syntax = {
   Conditional = {},
   Repeat = {},
   Label = {},
-  Operator = {},
+  Operator = { fg = palette.bright.white },
   Keyword = { italic = true },
   Exception = {},
   PreProc = {},
@@ -72,15 +71,9 @@ local syntax = {
   Error = {},
   Todo = {},
   Added = { fg = palette.green, standout = true },
-  Changed = {},
+  Changed = { fg = palette.bright.blue, standout = true },
   Removed = { fg = palette.red, standout = true },
 }
-
-for k, v in pairs(syntax) do
-  vim.api.nvim_set_hl(0, k, v)
-end
-
--- Treesitter highlights
 local treesitter = {
   ["@function"] = { fg = palette.bright.blue },
   ["@function.call"] = {},
@@ -88,10 +81,6 @@ local treesitter = {
   ["@string.special"] = { fg = palette.yellow },
   ["@string.special.path"] = { fg = palette.blue, underline = true },
 }
-for k, v in pairs(treesitter) do
-  vim.api.nvim_set_hl(0, k, v)
-end
-
 local diagnostics = {
   DiagnosticError = { fg = palette.red },
   DiagnosticWarn = { fg = palette.yellow },
@@ -105,6 +94,9 @@ local diagnostics = {
   DiagnosticUnderlineHint = { sp = palette.blue, underdotted = true },
   DiagnosticUnderlineOk = { sp = palette.green, underdotted = true },
 }
-for k, v in pairs(diagnostics) do
+
+local hightlight_groups = vim.tbl_extend("error", theme, spelling, syntax, treesitter, diagnostics)
+
+for k, v in pairs(hightlight_groups) do
   vim.api.nvim_set_hl(0, k, v)
 end
