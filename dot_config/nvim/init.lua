@@ -44,12 +44,6 @@ vim.o.exrc = true
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
--- Highlights
-vim.api.nvim_set_hl(0, "SpellBad", { sp = "red", undercurl = true })
-vim.api.nvim_set_hl(0, "SpellCap", { sp = "yellow", undercurl = true })
-vim.api.nvim_set_hl(0, "SpellRare", { sp = "blue", undercurl = true })
-vim.api.nvim_set_hl(0, "SpellLocal", { sp = "orange", undercurl = true })
-
 vim.o.spell = true
 
 -- Highlight selection on yank
@@ -93,9 +87,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
       end,
     })
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+
+    -- Disable LSP semantic tokens to avoid overriding treesitter highlights
+    if client ~= nil then
+      client.server_capabilities.semanticTokensProvider = nil
+    end
 
     -- LSP folding if available
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
     if client ~= nil and client:supports_method("textDocument/foldingRange") and vim.wo.foldexpr == 0 then
       local win = vim.api.nvim_get_current_win()
       vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
