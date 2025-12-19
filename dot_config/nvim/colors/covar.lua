@@ -20,6 +20,7 @@ local palette = {
   },
 }
 
+-- Highlight Groups
 local theme = {
   background = { bg = palette.bright.black },
   ColorColumn = { bg = palette.black },
@@ -75,11 +76,19 @@ local syntax = {
   Removed = { fg = palette.red, standout = true },
 }
 local treesitter = {
+  ["@comment.documentation"] = { fg = palette.bright.yellow, italic = true, standout = true },
   ["@function"] = { fg = palette.bright.blue },
   ["@function.call"] = {},
   ["@function.method.call"] = {},
   ["@string.special"] = { fg = palette.yellow },
   ["@string.special.path"] = { fg = palette.blue, underline = true },
+}
+local lsp = {
+  ["@lsp.type.function"] = {},
+  ["@lsp.type.method"] = {},
+  ["@lsp.typemod.function.declaration"] = { fg = palette.bright.blue },
+  ["@lsp.typemod.parameter.declaration"] = { fg = palette.bright.cyan },
+  ["@lsp.typemod.variable.declaration"] = { fg = palette.bright.cyan },
 }
 local diagnostics = {
   DiagnosticError = { fg = palette.red },
@@ -95,8 +104,9 @@ local diagnostics = {
   DiagnosticUnderlineOk = { sp = palette.green, underdotted = true },
 }
 
-local hightlight_groups = vim.tbl_extend("error", theme, spelling, syntax, treesitter, diagnostics)
+local hightlight_groups = vim.tbl_extend("error", theme, spelling, syntax, treesitter, lsp, diagnostics)
 
+-- Set the highlights
 for k, v in pairs(hightlight_groups) do
   vim.api.nvim_set_hl(0, k, v)
 end

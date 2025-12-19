@@ -89,11 +89,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     })
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
-    -- Disable LSP semantic tokens to avoid overriding treesitter highlights
-    if client ~= nil then
-      client.server_capabilities.semanticTokensProvider = nil
-    end
-
     -- LSP folding if available
     if client ~= nil and client:supports_method("textDocument/foldingRange") and vim.wo.foldexpr == 0 then
       local win = vim.api.nvim_get_current_win()
@@ -133,7 +128,7 @@ vim.filetype.add({
   },
 })
 
---vim.o.statusline = "%{mode([1])} %f %(%m%h%r%)%=%=%(%P %l:%c%)"
+vim.o.statusline = "%{mode([1])} %f %(%m%h%r%)%=%=%(%P %l:%c%)"
 function fd(cmdarg, cmdcomplete)
   local args = { "fd", "--type", "f", "--color=never" }
   if cmdarg then
