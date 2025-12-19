@@ -18,10 +18,17 @@ local function branchSubstr(str)
 end
 
 return {
+  {
+    "nvim-mini/mini.icons",
+    version = "*",
+    config = function()
+      require("mini.icons").setup()
+      MiniIcons.mock_nvim_web_devicons()
+    end,
+  },
   -- Bottom status bar
   -- {
   --   "nvim-lualine/lualine.nvim",
-  --   dependencies = { "nvim-tree/nvim-web-devicons", opts = {} },
   --   opts = {
   --     options = {
   --       icons_enabled = true,

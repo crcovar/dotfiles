@@ -85,6 +85,7 @@ local treesitter = {
 }
 local lsp = {
   ["@lsp.type.function"] = {},
+  ["@lsp.type.function"] = {},
   ["@lsp.type.method"] = {},
   ["@lsp.typemod.function.declaration"] = { fg = palette.bright.blue },
   ["@lsp.typemod.parameter.declaration"] = { fg = palette.bright.cyan },
@@ -110,3 +111,11 @@ local hightlight_groups = vim.tbl_extend("error", theme, spelling, syntax, trees
 for k, v in pairs(hightlight_groups) do
   vim.api.nvim_set_hl(0, k, v)
 end
+
+-- vim.diagnostic.config({
+--   signs = {
+--     text = {
+--       [vim.diagnostic.severity.WARN] = "\u{ea6c}",
+--     },
+--   },
+-- })
