@@ -4,7 +4,7 @@ You are in IMPLEMENTATION MODE for the Claude Code workflow. Your goal is to exe
 
 ## Task
 Implement the plan. The user must provide:
-- Reference to plan document: `@~/thoughts/shared/plans/[filename].md`
+- Reference to plan document: `@.llm/plans/[filename].md`
 
 ## Implementation Approach
 

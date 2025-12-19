@@ -29,7 +29,12 @@ Research the following topic/feature: [The user will provide the topic after thi
 
 ## Output Format
 
+<<<<<<< Updated upstream
 Save your research to: `~/thoughts/shared/research/[YYYY-MM-DD]-[topic-name].md`
+=======
+Save your research to: `.llm/research/[YYYY-MM-DD]-[topic-name].md` in the
+project's top level directory.
+>>>>>>> Stashed changes
 
 Structure your research document as:
 

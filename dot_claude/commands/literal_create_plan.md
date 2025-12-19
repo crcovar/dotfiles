@@ -5,8 +5,12 @@ You are in PLANNING MODE for the Claude Code workflow. Your goal is to create a 
 ## Task
 
 Create an implementation plan. The user should provide:
+<<<<<<< Updated upstream
 
 - Reference to research document (e.g., `@~/thoughts/shared/research/[filename].md`)
+=======
+- Reference to research document (e.g., `@.llm/research/[filename].md`)
+>>>>>>> Stashed changes
 - OR describe the feature/task to plan
 
 ## Planning Approach
@@ -34,7 +38,12 @@ Create an implementation plan. The user should provide:
 
 ## Output Format
 
+<<<<<<< Updated upstream
 Save your plan to: `~/thoughts/shared/plans/[YYYY-MM-DD]-[topic-name].md`
+=======
+Save your plan to: `.llm/plans/[YYYY-MM-DD]-[topic-name].md` in the
+project's top level directory.
+>>>>>>> Stashed changes
 
 Structure your plan as:
 

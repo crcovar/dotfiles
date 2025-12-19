@@ -5,8 +5,12 @@ You are in VALIDATION MODE for the Claude Code workflow. Your goal is to systema
 ## Task
 
 Validate the implementation against the plan. The user must provide:
+<<<<<<< Updated upstream
 
 - Reference to plan document: `@~/thoughts/shared/plans/[filename].md`
+=======
+- Reference to plan document: `@.llm/plans/[filename].md`
+>>>>>>> Stashed changes
 
 ## Validation Approach
 
