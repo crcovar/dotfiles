@@ -37,7 +37,7 @@ local spelling = {
 }
 local syntax = {
   Comment = { fg = palette.bright.yellow, italic = true },
-  Constant = { fg = palette.yellow },
+  Constant = { fg = palette.yellow, force = true },
   String = { fg = palette.green },
   Character = { fg = palette.bright.green, bold = true },
   Number = { fg = palette.yellow },
@@ -48,7 +48,7 @@ local syntax = {
   Statement = {},
   Conditional = {},
   Repeat = {},
-  Label = {},
+  Label = { fg = palette.bright.blue },
   Operator = { fg = palette.bright.white },
   Keyword = { italic = true },
   Exception = {},
@@ -85,8 +85,8 @@ local treesitter = {
 }
 local lsp = {
   ["@lsp.type.function"] = {},
-  ["@lsp.type.function"] = {},
   ["@lsp.type.method"] = {},
+  ["@lsp.typemod.class.declaration"] = { fg = palette.blue },
   ["@lsp.typemod.function.declaration"] = { fg = palette.bright.blue },
   ["@lsp.typemod.parameter.declaration"] = { fg = palette.bright.cyan },
   ["@lsp.typemod.variable.declaration"] = { fg = palette.bright.cyan },
