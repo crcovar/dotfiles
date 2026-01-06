@@ -17,12 +17,4 @@ return {
       diff.setup()
     end,
   },
-  {
-    "akinsho/git-conflict.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    version = "*",
-    lazy = true,
-    config = true,
-    opts = {},
-  },
 }
