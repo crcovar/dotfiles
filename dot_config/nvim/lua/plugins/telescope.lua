@@ -1,17 +1,13 @@
 return {
   {
-    "nvim-telescope/telescope.nvim",
-    branch = "master",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
-    keys = {
-      { "<leader>ff", "<cmd>Telescope find_files<CR>", mode = { "n" }, desc = "Find Files" },
-      { "<leader>fg", "<cmd>Telescope live_grep<CR>", mode = { "n" }, desc = "Live Grep" },
-      { "<leader>fb", "<cmd>Telescope buffers<CR>", mode = { "n" }, desc = "Buffers" },
-      { "<leader>fh", "<cmd>Telescope help_tags<CR>", mode = { "n" }, desc = "Help Tags" },
-      { "<leader>fr", "<cmd>Telescope oldfiles<CR>", mode = { "n" }, desc = "Recent Files" },
-      { "<leader>fc", "<cmd>Telescope commands<CR>", mode = { "n" }, desc = "Commands" },
-      { "<leader>ft", "<cmd>TodoTelescope <CR>", mode = { "n" }, desc = "Find todos" },
-    },
+    "nvim-mini/mini.pick",
+    version = false,
+    config = function()
+      local pick = require("mini.pick").setup()
+      vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>Pick files<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>Pick buffers<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>Pick grep_live<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>Pick help<CR>", { noremap = true, silent = true })
+    end,
   },
 }

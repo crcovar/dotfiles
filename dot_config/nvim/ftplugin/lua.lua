@@ -1,4 +1,7 @@
+local palette = require("colors/covar")
 require("nvim-treesitter").install({ "lua" }):wait(300000)
+
+vim.api.nvim_set_hl(0, "@property.lua", { fg = palette.bright.cyan })
 
 vim.treesitter.start()
 vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"

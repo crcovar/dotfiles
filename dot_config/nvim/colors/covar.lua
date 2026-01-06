@@ -26,8 +26,8 @@ local theme = {
   ColorColumn = { bg = palette.black },
   Folded = { bg = palette.black, fg = palette.cyan },
   CursorLineNr = { fg = palette.yellow, bg = palette.bright.black, bold = true },
-  LineNrAbove = { fg = palette.green, bg = palette.black, bold = true },
-  LineNrBelow = { fg = palette.green, bg = palette.black, bold = true },
+  LineNrAbove = { fg = palette.white, bg = palette.black, bold = true },
+  LineNrBelow = { fg = palette.white, bg = palette.black, bold = true },
 }
 local spelling = {
   SpellBad = { sp = palette.bright.red, undercurl = true },
@@ -71,9 +71,9 @@ local syntax = {
   Ignore = {},
   Error = {},
   Todo = {},
-  Added = { fg = palette.green, standout = true },
-  Changed = { fg = palette.bright.blue, standout = true },
-  Removed = { fg = palette.red, standout = true },
+  Added = { fg = palette.green },
+  Changed = { fg = palette.bright.blue },
+  Removed = { fg = palette.red },
 }
 local treesitter = {
   ["@comment.documentation"] = { fg = palette.bright.yellow, italic = true, standout = true },
@@ -104,8 +104,18 @@ local diagnostics = {
   DiagnosticUnderlineHint = { sp = palette.blue, underdotted = true },
   DiagnosticUnderlineOk = { sp = palette.green, underdotted = true },
 }
+local statusline = {
+  MiniStatuslineModeNormal = { bg = palette.blue, bold = true },
+  MiniStatuslineModeInsert = { bg = palette.green, bold = true },
+  MiniStatuslineModeVisual = { bg = palette.yellow, bold = true },
+  MiniStatuslineModeReplace = { bg = palette.magenta, bold = true },
+  MiniStatuslineModeCommand = { bg = palette.cyan, bold = true },
+  MiniStatuslineModeOther = { bg = palette.red, bold = true },
+  MiniStatuslineDevinfo = { bg = palette.bright.black, fg = palette.blue },
+  MiniStatuslineFileInfo = { bg = palette.bright.black, fg = palette.yellow },
+}
 
-local hightlight_groups = vim.tbl_extend("error", theme, spelling, syntax, treesitter, lsp, diagnostics)
+local hightlight_groups = vim.tbl_extend("error", theme, spelling, syntax, treesitter, lsp, diagnostics, statusline)
 
 -- Set the highlights
 for k, v in pairs(hightlight_groups) do
@@ -119,3 +129,4 @@ end
 --     },
 --   },
 -- })
+return palette

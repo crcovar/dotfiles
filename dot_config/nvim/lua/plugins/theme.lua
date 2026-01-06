@@ -8,89 +8,34 @@ local highlight = {
   "RainbowDelimiterCyan",
 }
 
-local function branchSubstr(str)
-  local s = str:match("%a+%-%d+")
-  if s ~= nil then
-    return s
-  else
-    return str:sub(1, 10)
-  end
-end
+-- local function branchSubstr(str)
+--   local s = str:match("%a+%-%d+")
+--   if s ~= nil then
+--     return s
+--   else
+--     return str:sub(1, 10)
+--   end
+-- end
 
 return {
+  -- icons
   {
     "nvim-mini/mini.icons",
     version = "*",
     config = function()
-      require("mini.icons").setup()
-      MiniIcons.mock_nvim_web_devicons()
+      local icons = require("mini.icons")
+      icons.setup()
+      -- icons.mock_nvim_web_devicons()
     end,
   },
-  -- Bottom status bar
-  -- {
-  --   "nvim-lualine/lualine.nvim",
-  --   opts = {
-  --     options = {
-  --       icons_enabled = true,
-  --       theme = "auto",
-  --       component_separators = { left = "", right = "" },
-  --       section_separators = { left = "", right = "" },
-  --       disabled_filetypes = {
-  --         statusline = {},
-  --         winbar = {},
-  --       },
-  --       ignore_focus = {},
-  --       always_divide_middle = true,
-  --       always_show_tabline = true,
-  --       globalstatus = false,
-  --       refresh = {
-  --         statusline = 1000,
-  --         tabline = 1000,
-  --         winbar = 1000,
-  --         refresh_time = 16,
-  --         events = {
-  --           "WinEnter",
-  --           "BufEnter",
-  --           "BufWritePost",
-  --           "SessionLoadPost",
-  --           "FileChangedShellPost",
-  --           "VimResized",
-  --           "Filetype",
-  --           "CursorMoved",
-  --           "CursorMovedI",
-  --           "ModeChanged",
-  --         },
-  --       },
-  --     },
-  --     sections = {
-  --       lualine_a = { { "mode", separator = { left = "" } } },
-  --       lualine_b = {
-  --         {
-  --           "branch",
-  --           fmt = branchSubstr,
-  --         },
-  --         "diff",
-  --         "diagnostics",
-  --       },
-  --       lualine_c = { "filename" },
-  --       lualine_x = { "encoding", "fileformat", "filetype" },
-  --       lualine_y = { "progress" },
-  --       lualine_z = { { "location", separator = { right = "" } } },
-  --     },
-  --     inactive_sections = {
-  --       lualine_a = {},
-  --       lualine_b = {},
-  --       lualine_c = { "filename" },
-  --       lualine_x = { "location" },
-  --       lualine_y = {},
-  --       lualine_z = {},
-  --     },
-  --     tabline = {},
-  --     winbar = {},
-  --     inactive_winbar = {},
-  --     extensions = {},
-  --   },
-  -- },
+  -- status line
+  {
+    "nvim-mini/mini.statusline",
+    version = false,
+    config = function()
+      require("mini.statusline").setup()
+    end,
+  },
   -- indent markings
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -107,30 +52,29 @@ return {
     },
   },
   -- Extra attention for certain comments
+  -- FIX: - something needing to fix
+  -- HACK: - This shit makes no sense, but is fixing something
+  -- INFO: - Just some information or context
+  -- NOTE: - Just a comment needing attention
+  -- PERF: - Something to do with performance
+  -- TEST: - Indicate a test
+  -- TODO: - Action item for the future
+  -- WARN: - Warning for the next developer to watch out for
   {
     "folke/todo-comments.nvim",
-    -- FIX: - something needing to fix
-    -- HACK: - This shit makes no sense, but is fixing something
-    -- INFO: - Just some information or context
-    -- NOTE: - Just a comment needing attention
-    -- PERF: - Something to do with performance
-    -- TEST: - Indicate a test
-    -- TODO: - Action item for the future
-    -- WARN: - Warning for the next developer to watch out for
     dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = { "TodoQuickFix" },
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {},
+  },
+  -- highlight colors
+  -- TODO: - Remove in v0.12, use LSP instead
+  {
+    "brenoprata10/nvim-highlight-colors",
     opts = {
-      highlight = {
-        pattern = ".*<(KEYWORDS)s*",
-      },
+      enable_tailwind = true,
     },
   },
-  -- TODO: Remove in v0.12 and replace with lsp
-  -- Color highlights
-  { "brenoprata10/nvim-highlight-colors", opts = {
-    enable_tailwind = true,
-  } },
-  -- Rainbow Trails
-  { "sedm0784/vim-rainbow-trails", lazy = true },
   -- Programmer's spellcheck
   {
     "psliwka/vim-dirtytalk",

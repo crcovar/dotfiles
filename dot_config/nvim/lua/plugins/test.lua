@@ -1,6 +1,6 @@
 return {
   "nvim-neotest/neotest",
-  event = { "BufReadPre", "BufNewFile" },
+  filetype = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
   keys = {
     { "<leader>tn", "<cmd>lua require('neotest').run.run()<CR>", desc = "Run Neotest" },
     { "<leader>ts", "<cmd>lua require('neotest').summary.toggle()<CR>", desc = "Toggle Neotest Summary" },

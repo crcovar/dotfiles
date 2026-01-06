@@ -1,5 +1,3 @@
-require("config.lazy")
-
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.numberwidth = 5
@@ -8,6 +6,7 @@ vim.o.cursorline = true
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.opt.colorcolumn = { 50, 72, 80 }
+vim.opt.termguicolors = true
 
 vim.o.clipboard = "unnamedplus"
 vim.o.wrap = false
@@ -119,6 +118,8 @@ vim.filetype.add({
   },
 })
 
+require("config.lazy")
+
 -- PLAYGROUND. Everything Below this line is just for messing around
 
 -- AppleScript filetype
@@ -128,7 +129,7 @@ vim.filetype.add({
   },
 })
 
-vim.o.statusline = "%{mode([1])} %f %(%m%h%r%)%=%=%(%P %l:%c%)"
+-- vim.o.statusline = "%{mode([1])} %f %(%m%h%r%)%=%=%(%P %l:%c%)"
 function fd(cmdarg, cmdcomplete)
   local args = { "fd", "--type", "f", "--color=never" }
   if cmdarg then
