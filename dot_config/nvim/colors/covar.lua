@@ -122,11 +122,4 @@ for k, v in pairs(hightlight_groups) do
   vim.api.nvim_set_hl(0, k, v)
 end
 
--- vim.diagnostic.config({
---   signs = {
---     text = {
---       [vim.diagnostic.severity.WARN] = "\u{ea6c}",
---     },
---   },
--- })
 return palette

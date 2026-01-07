@@ -2,8 +2,8 @@ return {
   {
     "nvim-mini/mini-git",
     version = false,
-    cmd = "Git",
-    event = { "BufReadPre", "BufNewFile" },
+    -- cmd = "Git",
+    -- event = { "BufReadPre", "BufNewFile" },
     config = function()
       require("mini.git").setup()
     end,
@@ -11,7 +11,7 @@ return {
   {
     "nvim-mini/mini.diff",
     version = false,
-    event = { "BufReadPre", "BufNewFile" },
+    -- event = { "BufReadPre", "BufNewFile" },
     config = function()
       local diff = require("mini.diff")
       diff.setup()

@@ -1,7 +1,6 @@
-require("nvim-treesitter").install({ "markdown" })
+require("nvim-treesitter").install({ "haskell" }):wait(300000)
 vim.treesitter.start()
 vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-vim.wo.conceallevel = 1
-vim.wo.wrap = true
-vim.wo.linebreak = true
+
+vim.lsp.enable({ "hls" })

@@ -41,7 +41,7 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     dependencies = { "HiPhish/rainbow-delimiters.nvim" },
     main = "ibl",
-    event = { "BufReadPre", "BufNewFile" },
+    -- event = { "BufReadPre", "BufNewFile" },
     opts = {
       indent = {
         highlight = highlight,
@@ -63,14 +63,15 @@ return {
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    cmd = { "TodoQuickFix" },
-    event = { "BufReadPre", "BufNewFile" },
+    -- cmd = { "TodoQuickFix" },
+    -- event = { "BufReadPre", "BufNewFile" },
     opts = {},
   },
   -- highlight colors
   -- TODO: - Remove in v0.12, use LSP instead
   {
     "brenoprata10/nvim-highlight-colors",
+    -- event = { "BufReadPre", "BufNewFile" },
     opts = {
       enable_tailwind = true,
     },
