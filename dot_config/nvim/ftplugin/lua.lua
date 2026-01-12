@@ -1,4 +1,4 @@
-local palette = require("colors/covar")
+local palette = require("config.palette")
 require("nvim-treesitter").install({ "lua" }):wait(300000)
 
 vim.api.nvim_set_hl(0, "@property.lua", { fg = palette.bright.cyan })

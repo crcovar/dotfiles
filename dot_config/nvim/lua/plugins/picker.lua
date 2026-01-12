@@ -4,10 +4,10 @@ return {
     version = false,
     config = function()
       require("mini.pick").setup()
-      vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>Pick files<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>Pick buffers<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>Pick grep_live<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>Pick help<CR>", { noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>ff", MiniPick.builtin.files, { noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>fb", MiniPick.builtin.buffers, { noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>fg", MiniPick.builtin.grep_live, { noremap = true, silent = true })
+      vim.keymap.set("n", "<leader>fh", MiniPick.builtin.help, { noremap = true, silent = true })
     end,
   },
 }

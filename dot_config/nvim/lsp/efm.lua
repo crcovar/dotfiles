@@ -28,6 +28,7 @@ local languages = {
   typescriptreact = { eslint, prettier },
   html = { prettier },
   css = { prettier },
+  yaml = { prettier },
 }
 
 return {

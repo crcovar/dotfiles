@@ -67,24 +67,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         return { abbr = item.label:gsub("%b()", "") }
       end,
     })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      callback = function()
-        local clients = vim.lsp.get_clients({ bufnr = ev.buf })
-        if
-          vim.tbl_contains(clients, function(t)
-            return t.name == "zls"
-          end, { predicate = true })
-        then
-          vim.lsp.buf.format({ name = "zls", async = false })
-        elseif
-          vim.tbl_contains(clients, function(t)
-            return t.name == "efm"
-          end, { predicate = true })
-        then
-          vim.lsp.buf.format({ name = "efm", async = false })
-        end
-      end,
-    })
+
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
     -- LSP folding if available
@@ -92,15 +75,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
       local win = vim.api.nvim_get_current_win()
       vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
     end
-
-    vim.api.nvim_set_keymap(
-      "n",
-      "<leader>e",
-      "<cmd>lua vim.diagnostic.open_float()<cr>",
-      { noremap = true, silent = true }
-    )
   end,
 })
+-- LSP Format on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function()
+    vim.lsp.buf.format({ silent = true })
+  end,
+})
+
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { noremap = true, silent = true })
 
 vim.o.confirm = true
 
@@ -125,7 +109,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
+      { out,                            "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
     vim.fn.getchar()
