@@ -3,13 +3,16 @@ return {
   version = "*", -- recommended, use latest release instead of latest commit
   cmd = "Obsidian",
   keys = {
-    { "<leader>on", "<cmd>Obsidian new<CR>", mode = { "n" }, desc = "Obsidian New Note" },
+    { "<leader>on", "<cmd>Obsidian new<CR>",          mode = { "n" }, desc = "Obsidian New Note" },
     { "<leader>oq", "<cmd>Obsidian quick_switch<CR>", mode = { "n" }, desc = "Obsidian Quick Switch" },
   },
   --- @module 'obsidan',
   --- @type obsidian.config
   opts = {
     legacy_commands = false, -- TODO: - Remove in next major release
+    note_id_func = function(title)
+      return "0 Inbox/" .. title
+    end,
     workspaces = {
       {
         name = "personal",
