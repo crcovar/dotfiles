@@ -97,7 +97,8 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 # Use nvim if available
 if type nvim > /dev/null 2>&1 ; then
   alias vi='nvim'
-	alias vim='nvim'
+  alias vim='nvim'
+  alias view='nvim -R'
 fi
 
 export EDITOR='nvim'
@@ -156,7 +157,7 @@ if command -v fastfetch &>/dev/null; then
 fi
 
 # Libpq
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
 # For pkg-config to find libpq you may need to set:
@@ -166,6 +167,7 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
 alias claude="~/.claude/local/claude"
 
 [ -f ~/.ghcup ] && source ~/.ghcup/env
+export PATH="$HOME/go/bin:$PATH"
 
 # HELP files
 unalias run-help 2>/dev/null
