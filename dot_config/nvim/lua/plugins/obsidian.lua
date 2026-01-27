@@ -4,7 +4,7 @@ return {
   cmd = "Obsidian",
   keys = {
     { "<leader>on", "<cmd>Obsidian new<CR>",          mode = { "n" }, desc = "Obsidian New Note" },
-    { "<leader>oq", "<cmd>Obsidian quick_switch<CR>", mode = { "n" }, desc = "Obsidian Quick Switch" },
+    { "<leader>fo", "<cmd>Obsidian quick_switch<CR>", mode = { "n" }, desc = "Obsidian Quick Switch" },
   },
   --- @module 'obsidan',
   --- @type obsidian.config
