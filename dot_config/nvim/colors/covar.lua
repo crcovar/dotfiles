@@ -61,6 +61,7 @@ local treesitter = {
   ["@function.method.call"] = {},
   ["@string.special"] = { fg = palette.yellow },
   ["@string.special.path"] = { fg = palette.blue, underline = true },
+  ["@type.definition"] = { fg = palette.bright.blue },
 }
 local lsp = {
   ["@lsp.type.function"] = {},
