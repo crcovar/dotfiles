@@ -158,6 +158,9 @@ if command -v fastfetch &>/dev/null; then
   echo
 fi
 
+# Gawk
+PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
+
 # Libpq
 PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
