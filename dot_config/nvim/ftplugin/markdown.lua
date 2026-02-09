@@ -1,4 +1,4 @@
-local palette = require("config.palette")
+local palette = require("palette")
 require("nvim-treesitter").install({ "markdown" })
 
 vim.api.nvim_set_hl(0, "@markup.heading", { fg = palette.bright.yellow, bold = true })

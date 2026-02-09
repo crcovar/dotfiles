@@ -1,4 +1,4 @@
-local palette = require("config.palette")
+local palette = require("palette")
 vim.api.nvim_set_hl(0, "@keyword.return.go", { fg = palette.magenta, bold = true })
 
 require("nvim-treesitter").install({ "go" }):wait(300000)

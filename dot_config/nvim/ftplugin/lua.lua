@@ -1,4 +1,12 @@
-local palette = require("config.palette")
+MiniDeps.add("folke/lazydev.nvim")
+require("lazydev").setup({
+  library = {
+    -- Load luvit types when the `vim.uv` word is found
+    { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+  },
+})
+
+local palette = require("palette")
 require("nvim-treesitter").install({ "lua" }):wait(300000)
 
 vim.api.nvim_set_hl(0, "@property.lua", { fg = palette.bright.cyan })

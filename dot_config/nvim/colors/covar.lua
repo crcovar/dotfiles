@@ -1,4 +1,4 @@
-local palette = require("config.palette")
+local palette = require("palette")
 -- Highlight Groups
 local theme = {
   background = { bg = palette.bright.black },
