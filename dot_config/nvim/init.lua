@@ -1,24 +1,3 @@
--- Setup 'mini.deps'
-local path_package = vim.fn.stdpath("data") .. "/site/"
-local mini_path = path_package .. "pack/deps/start/mini.deps"
-if not vim.loop.fs_stat(mini_path) then
-  vim.cmd('echo "Installing [`mini.deps`](../doc/mini-nvim.qmd#mini.deps)" | redraw')
-  local clone_cmd = {
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/nvim-mini/mini.deps",
-    mini_path,
-  }
-  vim.fn.system(clone_cmd)
-  vim.cmd("packadd mini.deps | helptags ALL")
-  vim.cmd('echo "Installed `mini.deps`" | redraw')
-end
--- setup 'mini.deps'
-require("mini.deps").setup({ path = { package = path_package } })
-
-require("plugins")
-
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.numberwidth = 5
@@ -41,19 +20,14 @@ vim.api.nvim_create_autocmd("InsertEnter", {
   group = folds_group,
   pattern = "*",
   callback = function()
-    vim.w.oldfdm = vim.wo.foldmethod
-    vim.wo.foldmethod = "manual"
+    vim.o.foldmethod = "manual"
   end,
 })
 vim.api.nvim_create_autocmd("InsertLeave", {
   group = folds_group,
   pattern = "*",
   callback = function()
-    if vim.w.oldfdm then
-      vim.wo.foldmethod = vim.w.oldfdm
-      vim.w.oldfdm = nil
-    end
-    vim.cmd("normal! zv")
+    vim.o.foldmethod = "expr"
   end,
 }) -- Local project configuration
 
@@ -107,6 +81,25 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { noremap = true, silent = true })
 
+-- snippets keymapping
+vim.keymap.set("n", "<C-j>", vim.snippet.expand, { silent = true })
+
+-- Use abbreviations to expand snippets.
+function vim.snippet.add(trigger, body, opts)
+  vim.keymap.set("ia", trigger, function()
+    local c = vim.fn.nr2char(vim.fn.getchar(0))
+    if c ~= "" then
+      vim.api.nvim_feedkeys(trigger .. c, "i", true)
+      return
+    end
+    -- change the folding to manual before snippet expansion to avoid
+    -- creating a fold in insert mode over our snippets
+    vim.o.foldexpr = "manual"
+    vim.snippet.expand(body)
+    vim.o.foldexpr = "expr"
+  end, opts)
+end
+
 vim.o.confirm = true
 
 vim.cmd.colorscheme("covar")
@@ -121,6 +114,26 @@ vim.filetype.add({
     ["Caddyfile.dev"] = "caddy",
   },
 })
+
+-- Setup 'mini.deps'
+local path_package = vim.fn.stdpath("data") .. "/site/"
+local mini_path = path_package .. "pack/deps/start/mini.deps"
+if not vim.loop.fs_stat(mini_path) then
+  vim.cmd('echo "Installing [`mini.deps`](../doc/mini-nvim.qmd#mini.deps)" | redraw')
+  local clone_cmd = {
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/nvim-mini/mini.deps",
+    mini_path,
+  }
+  vim.fn.system(clone_cmd)
+  vim.cmd("packadd mini.deps | helptags ALL")
+  vim.cmd('echo "Installed `mini.deps`" | redraw')
+end
+-- setup 'mini.deps'
+require("mini.deps").setup({ path = { package = path_package } })
+require("plugins")
 
 -- PLAYGROUND. Everything Below this line is just for messing around
 

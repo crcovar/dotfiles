@@ -9,12 +9,12 @@ local palette = {
   white = "#b0a7b8",
 
   bright = {
-    black = "#10121c",
+    black = "#30323c",
     red = "#fa6e79",
     green = "#9de64e",
     yellow = "#e8d282",
     blue = "#36c5f4",
-    magenta = "#deceed",
+    magenta = "#deaeed",
     cyan = "#6dead6",
     white = "#ffffff",
   },
