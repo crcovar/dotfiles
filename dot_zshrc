@@ -168,11 +168,10 @@ export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
 # For pkg-config to find libpq you may need to set:
 export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
 
-
-alias claude="~/.claude/local/claude"
-
 [ -f ~/.ghcup ] && source ~/.ghcup/env
-export PATH="$HOME/go/bin:$PATH"
+PATH="$HOME/go/bin:$PATH"
+
+export PATH="$HOME/.local/bin:$PATH"
 
 # HELP files
 unalias run-help 2>/dev/null
