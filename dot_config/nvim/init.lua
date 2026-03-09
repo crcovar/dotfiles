@@ -27,9 +27,12 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   group = folds_group,
   pattern = "*",
   callback = function()
-    vim.o.foldmethod = "expr"
+    local mode = vim.fn.mode(1)
+    if mode == "n" then
+      vim.o.foldmethod = "expr"
+    end
   end,
-}) -- Local project configuration
+})
 
 vim.o.exrc = true
 
