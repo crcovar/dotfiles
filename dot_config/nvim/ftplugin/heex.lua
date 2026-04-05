@@ -1,4 +1,4 @@
-require("nvim-treesitter").install({ "heex" }):wait(300000)
+require("nvim-treesitter").install({ "css", "heex", "html", "javascript" }):wait(300000)
 
 vim.treesitter.start()
 vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"

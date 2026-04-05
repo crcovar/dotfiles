@@ -1,3 +1,5 @@
+vim.pack.add({ "https://github.com/creativenull/efmls-configs-nvim" })
+
 local eslint = require("efmls-configs.linters.eslint")
 local golint = require("efmls-configs.linters.golint")
 local gofmt = require("efmls-configs.formatters.gofmt")
@@ -12,7 +14,7 @@ local languages = {
   go = { golint, gofmt },
   elixir = {
     {
-      formatCommand = string.format("%s %s", fs.executable("mix"), "format --stdin-filename ${INPUT} -"),
+      formatCommand = string.format("%s %s", fs.executable("mix", 'BUNDLE'), "format --stdin-filename ${INPUT} -"),
       formatStdin = true,
       rootMarkers = {
         ".formatter.exs",

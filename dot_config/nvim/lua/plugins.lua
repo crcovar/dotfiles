@@ -1,38 +1,34 @@
-MiniDeps.add({ source = "nvim-mini/mini.icons", checkout = "stable" })
-MiniDeps.add({ source = "nvim-mini/mini.statusline", checkout = "stable" })
-MiniDeps.add({ source = "nvim-mini/mini.pick", checkout = "stable" })
-MiniDeps.add({ source = "nvim-mini/mini-git", checkout = "stable" })
-MiniDeps.add({ source = "nvim-mini/mini.diff", checkout = "stable" })
-MiniDeps.add({ source = "nvim-mini/mini.surround", checkout = "stable" })
-
-MiniDeps.add("HiPhish/rainbow-delimiters.nvim")
-MiniDeps.add("nvim-lua/plenary.nvim")
-MiniDeps.add("folke/todo-comments.nvim")
-MiniDeps.add("brenoprata10/nvim-highlight-colors")
-MiniDeps.add({
-  source = "psliwka/vim-dirtytalk",
-  hooks = {
-    post_checkout = function()
-      vim.cmd("DirtytalkUpdate")
-    end,
-  },
+vim.pack.add({
+  { src = "https://github.com/nvim-mini/mini.icons",      version = "stable" },
+  { src = "https://github.com/nvim-mini/mini.statusline", version = "stable" },
+  { src = "https://github.com/nvim-mini/mini.pick",       version = "stable" },
+  { src = "https://github.com/nvim-mini/mini-git",        version = "stable" },
+  { src = "https://github.com/nvim-mini/mini.diff",       version = "stable" },
+  { src = "https://github.com/nvim-mini/mini.surround",   version = "stable" },
+  "https://github.com/HiPhish/rainbow-delimiters.nvim",
+  "https://github.com/nvim-lua/plenary.nvim",
+  "https://github.com/folke/todo-comments.nvim",
+  "https://github.com/brenoprata10/nvim-highlight-colors",
+  "https://github.com/psliwka/vim-dirtytalk",
+  "https://github.com/nvim-treesitter/nvim-treesitter",
+  "https://github.com/williamboman/mason.nvim",
+  "https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/obsidian-nvim/obsidian.nvim",
 })
 
-MiniDeps.add({
-  source = "nvim-treesitter/nvim-treesitter",
-  checkout = "main",
-  hooks = {
-    post_checkout = function()
+vim.api.nvim_create_autocmd("PackChanged", {
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == 'nvim-treesitter' and kind == 'update' then
+      if not ev.data.active then vim.cmd.packadd('nvim-treesitter') end
       vim.cmd("TSUpdate")
-    end,
-  },
+    end
+    if name == 'vim-dirtytalk' and kind == 'update' then
+      if not ev.data.active then vim.cmd.packadd('vim-dirtytalk') end
+      vim.cmd('DirtyTalkUpdate')
+    end
+  end
 })
-
-MiniDeps.add("neovim/nvim-lspconfig")
-MiniDeps.add("creativenull/efmls-configs-nvim")
-MiniDeps.add("williamboman/mason.nvim")
-
-MiniDeps.add("obsidian-nvim/obsidian.nvim")
 
 -- Plugin setup
 
@@ -68,7 +64,7 @@ vim.keymap.set("n", "<leader>df", MiniDiff.toggle_overlay, { noremap = true, sil
 
 require("mini.surround").setup()
 
-MiniDeps.later(function()
+vim.schedule(function()
   require("obsidian").setup({
     legacy_commands = false, -- TODO: - Remove in next major release
     note = { template = nil },

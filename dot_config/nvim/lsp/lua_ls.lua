@@ -7,7 +7,6 @@ return {
           "hs",
           "spoon",
           "require",
-          "MiniDeps",
           "MiniPick",
           "MiniDiff",
         }, -- Recognize 'vim' as a global variable

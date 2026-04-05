@@ -1,4 +1,4 @@
-require("nvim-treesitter").install({ "elixir" }):wait(300000)
+require("nvim-treesitter").install({ "elixir", "eex" }):wait(300000)
 
 vim.treesitter.start()
 vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"

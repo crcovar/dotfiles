@@ -9,7 +9,7 @@ vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
 vim.lsp.enable("lua_ls")
 
-MiniDeps.add("folke/lazydev.nvim")
+vim.pack.add({ "https://github.com/folke/lazydev.nvim" })
 require("lazydev").setup({
   library = {
     -- Load luvit types when the `vim.uv` word is found
