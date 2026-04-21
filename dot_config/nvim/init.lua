@@ -118,9 +118,6 @@ vim.filetype.add({
   },
 })
 
--- Plugin management
-require("plugins")
-
 -- PLAYGROUND. Everything Below this line is just for messing around
 
 -- AppleScript filetype
@@ -137,3 +134,5 @@ function fd(cmdarg, cmdcomplete)
   end
   return vim.fn.systemlist(args)
 end
+
+require('vim._core.ui2').enable({})
