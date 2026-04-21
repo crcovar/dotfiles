@@ -1,67 +1,96 @@
+{{ if eq .chezmoi.hostname "FG_MBP" }}
+tap "hashicorp/tap"
+{{ end }}
 tap "homebrew/bundle"
 tap "homebrew/services"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.13"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Secure and free password manager for all of your devices
+brew "bitwarden-cli"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
-# Container runtimes on MacOS (and Linux) with minimal setup
-brew "colima"
 # Apjanke's fork of the classic cowsay project
 brew "cowsay"
 # Functional metaprogramming aware language built on Erlang VM
 brew "elixir"
+# LLVM bytecode to JavaScript compiler
+brew "emscripten"
+# AST-based pattern checker for JavaScript
+brew "eslint"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Play, record, convert, and stream audio and video
+# Low-level access to audio, keyboard, mouse, joystick, and graphics
+brew "sdl2"
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
 # Banner-like program prints strings as ASCII art
 brew "figlet"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GNU awk utility
+brew "gawk"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Fast and powerful log viewer and processor
+brew "hl"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Simple terminal UI for git commands
-brew "lazygit"
+# Modern load testing tool, using Go and JavaScript
+brew "k6"
 # Postgres C API library
 brew "libpq"
+# Next-gen compiler infrastructure
+brew "llvm"
 # Rainbows and unicorns in your console!
 brew "lolcat"
 # Package manager for the Lua programming language
 brew "luarocks"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Platform built on V8 to build network applications
-brew "node"
 # Fast, disk space efficient package manager
 brew "pnpm"
+# Prettier daemon
+brew "prettierd"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Safe, concurrent, practical language
 brew "rust"
+# Sample multi-channel audio mixer library
+brew "sdl2_mixer"
+# Small sample cross-platform networking library
+brew "sdl2_net"
 # Prints a steam locomotive if you type sl instead of ls
 brew "sl"
 # Tool Command Language
 brew "tcl-tk"
 # Terminal multiplexer
 brew "tmux"
+# Parser generator tool
+brew "tree-sitter-cli"
 # Internet file retriever
 brew "wget"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
 # Application launcher and productivity software
 cask "alfred"
 # Menu bar icon organiser
 cask "bartender"
+# Utility that prevents the system from going to sleep
+cask "caffeine"
 # Calendar software
 cask "fantastical"
 # Terminal emulator that uses platform-native UI and GPU acceleration
@@ -72,11 +101,31 @@ cask "karabiner-elements"
 cask "keycastr"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
-# To-do list
-cask "todoist"
+# Real time file synchronisation software
+cask "syncthing-app"
 # Multimedia player
 cask "vlc"
+# Install and switch between multiple versions of Xcode
+cask "xcodes-app"
 # Gecko based web browser
 cask "zen"
 # Video communication and virtual meeting platform
 cask "zoom"
+# OpenJDK distribution from Azul
+cask "zulu@17"
+{{ if eq .chezmoi.hostname "FG_MBP" }}
+# Docker CLI plugin for extended build capabilities with BuildKit
+brew "docker-buildx"
+# Isolated development environments using Docker
+brew "docker-compose"
+# Additional guest agents for Lima
+brew "lima-additional-guestagents"
+# Universal database tool and SQL client
+cask "dbeaver-community"
+# App to build and share containerised applications and microservices
+cask "docker-desktop"
+# Collaborative team software
+cask "figma"
+# Development environment
+cask "hashicorp/tap/hashicorp-vagrant"
+{{ end }}
