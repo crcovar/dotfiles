@@ -19,16 +19,20 @@ vim.pack.add({
 vim.api.nvim_create_autocmd("PackChanged", {
   callback = function(ev)
     local name, kind = ev.data.spec.name, ev.data.kind
-    if name == 'nvim-treesitter' and kind == 'update' then
-      if not ev.data.active then vim.cmd.packadd('nvim-treesitter') end
+    if name == "nvim-treesitter" and kind == "update" then
+      if not ev.data.active then
+        vim.cmd.packadd("nvim-treesitter")
+      end
       vim.cmd("TSUpdate")
     end
-    if name == 'vim-dirtytalk' and kind == 'update' then
-      if not ev.data.active then vim.cmd.packadd('vim-dirtytalk') end
-      vim.cmd('DirtyTalkUpdate')
-      vim.opt.spelllang = { "en_us", "programming", }
+    if name == "vim-dirtytalk" and kind == "update" then
+      if not ev.data.active then
+        vim.cmd.packadd("vim-dirtytalk")
+      end
+      vim.cmd("DirtyTalkUpdate")
+      vim.opt.spelllang = { "en_us", "programming" }
     end
-  end
+  end,
 })
 
 -- Plugin setup
