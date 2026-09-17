@@ -3,7 +3,8 @@ local palette = require("palette")
 local theme = {
   background = { bg = palette.bright.black },
   ColorColumn = { bg = palette.black },
-  Folded = { bg = palette.black, fg = palette.cyan },
+  Folded = { bg = palette.black, fg = palette.cyan, dim = true },
+  FoldColumn = { bg = palette.black, fg = palette.cyan },
   CursorLineNr = { fg = palette.yellow, bg = palette.bright.black, bold = true },
   LineNrAbove = { fg = palette.white, bg = palette.black, bold = true },
   LineNrBelow = { fg = palette.white, bg = palette.black, bold = true },

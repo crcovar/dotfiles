@@ -13,6 +13,9 @@ vim.o.wrap = false
 
 -- Setup folding
 vim.o.foldmethod = "expr"
+vim.o.foldcolumn = "auto"
+vim.o.foldtext = ""
+vim.o.statuscolumn = "%l %C"
 -- Keep folds from collapsing while we work
 local folds_group = vim.api.nvim_create_augroup("folds", { clear = true })
 
@@ -107,6 +110,8 @@ vim.o.confirm = true
 
 vim.cmd.colorscheme("covar")
 
+require("vim._core.ui2").enable({})
+
 -- Caddyfile
 vim.filetype.add({
   extension = {
@@ -134,5 +139,3 @@ function fd(cmdarg, cmdcomplete)
   end
   return vim.fn.systemlist(args)
 end
-
-require('vim._core.ui2').enable({})
