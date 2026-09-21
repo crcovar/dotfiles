@@ -76,8 +76,8 @@ vim.schedule(function()
     end,
     workspaces = {
       {
-        name = "personal",
-        path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/My notes",
+        name = "notes",
+        path = "~/obsidian/notes",
       },
     },
   })
