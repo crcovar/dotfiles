@@ -1,6 +1,7 @@
 require("nvim-treesitter").install({ "elixir", "eex" }):wait(300000)
 
 vim.treesitter.start()
+vim.wo.foldlevel = 1
 vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 vim.lsp.enable("expert")

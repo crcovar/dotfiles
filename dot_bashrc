@@ -57,3 +57,4 @@ export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
 # For pkg-config to find libpq you may need to set:
 export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
 
+. "$HOME/.cargo/env"

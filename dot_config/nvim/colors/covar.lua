@@ -8,6 +8,7 @@ local theme = {
   CursorLineNr = { fg = palette.yellow, bg = palette.bright.black, bold = true },
   LineNrAbove = { fg = palette.white, bg = palette.black, bold = true },
   LineNrBelow = { fg = palette.white, bg = palette.black, bold = true },
+  Cursor = {},
 }
 local spelling = {
   SpellBad = { sp = palette.bright.red, undercurl = true },
@@ -56,7 +57,7 @@ local syntax = {
   Removed = { fg = palette.red },
 }
 local treesitter = {
-  ["@comment.documentation"] = { fg = palette.bright.yellow, italic = true, standout = true },
+  ["@comment.documentation"] = { fg = palette.bright.yellow, dim = true },
   ["@function"] = { fg = palette.bright.blue },
   ["@function.call"] = {},
   ["@function.method.call"] = {},
@@ -71,6 +72,7 @@ local lsp = {
   ["@lsp.typemod.function.declaration"] = { fg = palette.bright.blue },
   ["@lsp.typemod.parameter.declaration"] = { fg = palette.bright.cyan },
   ["@lsp.typemod.variable.declaration"] = { fg = palette.bright.cyan },
+  ["@lsp.typemod.comment.documentation"] = { fg = palette.bright.yellow, dim = true },
 }
 local diagnostics = {
   DiagnosticError = { fg = palette.red },
@@ -96,9 +98,9 @@ local statusline = {
   MiniStatuslineFileInfo = { bg = palette.bright.black, fg = palette.yellow },
 }
 
-local hightlight_groups = vim.tbl_extend("error", theme, spelling, syntax, treesitter, lsp, diagnostics, statusline)
+local highlight_groups = vim.tbl_extend("error", theme, spelling, syntax, treesitter, lsp, diagnostics, statusline)
 
 -- Set the highlights
-for k, v in pairs(hightlight_groups) do
+for k, v in pairs(highlight_groups) do
   vim.api.nvim_set_hl(0, k, v)
 end

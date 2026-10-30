@@ -1,0 +1,25 @@
+-- vim.api.nvim_create_autocmd("CursorMoved", {
+--   callback = function()
+--     local insp = vim.inspect_pos()
+--     local hl_groups = vim.api.nvim_get_hl(0, { link = false })
+--
+--     for key, val in pairs(hl_groups) do
+--       local has_treesitter = false
+--       local has_semantic = vim.tbl_contains(insp.semantic_tokens, function(v)
+--         return key == v.opts.hl_group or key == v.opts.hl_group_link
+--       end, { predicate = true })
+--
+--       if not has_semantic then
+--         has_treesitter = vim.tbl_contains(insp.treesitter, function(v)
+--           return key == v.hl_group or key == v.hl_group_link
+--         end, { predicate = true })
+--       end
+--
+--       if has_semantic == true or has_treesitter == true then
+--         local v = vim.tbl_extend("force", val, { reverse = not val.reverse })
+--         vim.api.nvim_set_hl(0, "Cursor", v)
+--         return
+--       end
+--     end
+--   end,
+-- })

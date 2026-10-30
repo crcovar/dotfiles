@@ -5,11 +5,17 @@ vim.o.numberwidth = 5
 vim.o.cursorline = true
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
-vim.opt.colorcolumn = { 50, 72, 80 }
-vim.opt.termguicolors = true
+vim.o.colorcolumn = "50,72,80"
+vim.o.termguicolors = true
+vim.o.guicursor = "n-v-c-sm:block-Cursor/lCursor,i-ci-ve:ver25,r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor"
 
 vim.o.clipboard = "unnamedplus"
 vim.o.wrap = false
+
+-- Completion
+vim.o.complete = ".,w,b,u,o"
+vim.o.completeopt = "fuzzy,menuone,noinsert,popup"
+vim.o.autocomplete = true
 
 -- Setup folding
 vim.o.foldmethod = "expr"
@@ -19,6 +25,18 @@ vim.o.statuscolumn = "%l %C"
 -- Keep folds from collapsing while we work
 local folds_group = vim.api.nvim_create_augroup("folds", { clear = true })
 
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+
+    -- LSP folding if available
+    if client ~= nil and client:supports_method("textDocument/foldingRange") and vim.wo.foldexpr == 0 then
+      local win = vim.api.nvim_get_current_win()
+      vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+    end
+  end,
+})
 vim.api.nvim_create_autocmd("InsertEnter", {
   group = folds_group,
   pattern = "*",
@@ -56,28 +74,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- enable our generic language server, use for format on save
 vim.lsp.enable("efm")
 
--- enable lsp completion, and formatting on save. Enabling of language servers
--- is handled in each ft plugin file.
-vim.opt.completeopt = { "fuzzy", "menuone", "noinsert", "popup" }
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
-  callback = function(ev)
-    vim.lsp.completion.enable(true, ev.data.client_id, ev.buf, {
-      autotrigger = true,
-      convert = function(item)
-        return { abbr = item.label:gsub("%b()", "") }
-      end,
-    })
-
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-
-    -- LSP folding if available
-    if client ~= nil and client:supports_method("textDocument/foldingRange") and vim.wo.foldexpr == 0 then
-      local win = vim.api.nvim_get_current_win()
-      vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
-    end
-  end,
-})
 -- LSP Format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function()
@@ -139,3 +135,5 @@ function fd(cmdarg, cmdcomplete)
   end
   return vim.fn.systemlist(args)
 end
+
+vim.g.editorconfig = false
